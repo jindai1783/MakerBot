@@ -1,6 +1,6 @@
 describe('1-2-1', function() {
 
-  beforeEach(function() {
+  before(function() {
     casper.start('https://makerstest.slack.com/messages');
     casper.waitForSelector('form', function() {
 
@@ -20,10 +20,24 @@ describe('1-2-1', function() {
   });
 
   it('reports the URL for the 1-2-1 schedule', function() {
-    casper.start('https://makerstest.slack.com/messages/@slackbot/');
+    casper.start('https://makerstest.slack.com/messages/@makerbot/');
 
-    casper.then(function() {
+    casper.waitFor(function() {
+      casper.waitForSelector('form#message-form', function() {
+
+        this.sendKeys("textarea[id='message-input']", '1-2-1')
+        this.sendKeys("textarea[id='message-input']", casper.page.event.key.Enter)
+
+          // this.fillSelectors('form#message-form', {
+          //   "textarea[id='message-input']": ,
+          // });
+        
+        this.capture('./screenshot.png');
+      });
+    }, 6000)
       
+    casper.then(function() {
+      expect('span.message_content').to.include.text('1-2-1');
     });
   });
 });
