@@ -1,5 +1,5 @@
-var MakersGitHub = require('../makersGitHub.js');
-var One2One = require('../One2One.js');
+var MakersGitHub = require('../app/makersGitHub.js');
+var One2One = require('../app/One2One.js');
 
 
 describe('One2One', function() {

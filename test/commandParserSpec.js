@@ -1,3 +1,5 @@
+var chai = require('chai');
+var expect = chai.expect;
 var CommandParser = require('../app/CommandParser.js');
 
 describe("Command Parser", function() {
