@@ -1,3 +1,6 @@
+
+var chai = require('chai');
+var expect = chai.expect;
 var MakersGitHub = require('../app/makersGitHub.js');
 var One2One = require('../app/One2One.js');
 
@@ -12,13 +15,15 @@ describe('One2One', function() {
   });
 
   it('it should be initialized with an API', function() {
-    expect(one2one.api).to.equal(makers);;
+    expect(one2one.api).to.equal(makers);
   });
 
-  it('should be able to get info from github', function(){
+  
+  it('should receive info from API', function(done) {
     one2one.getInfo(function(data) {
-      expect(data).to.contain('Store');
+      expect(one2one.apiData).to.equal('.DS_Store');
       done();
-    })
+    });  
   });
+
 });

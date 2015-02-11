@@ -1,12 +1,11 @@
 function One2One(api){
   this.api = api;
-  this.data = null;
+  this.apiData = null;
 }
 
 One2One.prototype.getInfo = function() {
-  this.api.readFileInfo('.gitignore', function(data){
-    this.data = data;
-  });
+  this.apiData = this.api.readFileInfo('.gitignore', function(){console.log(this.apiData)});
 };
+
 
 module.exports = One2One;
