@@ -1,8 +1,11 @@
-var commandParser = require('./commandParser');
-var commandEngine = new commandParser();
 var slackbot = require('node-slackbot');
-
 var bot = new slackbot('xoxb-3664957276-x4H5juXjVNiHKheMYsz1VdHa');
+
+var commandParser = require('./commandParser');
+
+var utilityHash = {}
+
+var commandEngine = new commandParser(utilityHash);
 
 bot.use(function(message, cb) {
   if ('message' == message.type) {

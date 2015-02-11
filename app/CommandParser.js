@@ -1,13 +1,6 @@
 var CommandParser = function(utilityHash) {
-
   this.commands = utilityHash;
-
 };
-
-// CommandParser.prototype._argumentParser = function(command, callback) {
-
-
-// };
 
 CommandParser.prototype.parse = function(command, callback) {
   var rootCommand = this._commandStripper(command);
