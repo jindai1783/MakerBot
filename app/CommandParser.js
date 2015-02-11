@@ -1,6 +1,6 @@
-var CommandParser = function(hash) {
+var CommandParser = function(utilityHash) {
 
-  this.commands = hash;
+  this.commands = utilityHash;
 
 };
 
@@ -10,16 +10,23 @@ var CommandParser = function(hash) {
 // };
 
 CommandParser.prototype.parse = function(command, callback) {
-  // var command = argumentStripper(command);
-  // var arguments= commandStripper(command); // return arguments in array
-
-  if(this.commands[command] != null) {
-    var responseObject = new this.commands[command];
+  var rootCommand = this._commandStripper(command);
+  var arguments = this._argumentStripper(command);
+  if(this.commands[rootCommand] != null) {
+    var responseObject = new this.commands[rootCommand](arguments);
     response = responseObject.getResponse();
     callback(null, response);
   } else {
     callback(true);
   }
+};
+
+CommandParser.prototype._argumentStripper = function(command) {
+  return command.split(" ").slice(2);
+};
+
+CommandParser.prototype._commandStripper = function(command) {
+  return command.split(" ")[1];
 };
 
 module.exports = CommandParser;

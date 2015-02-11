@@ -9,18 +9,32 @@ describe("Command Parser", function() {
 
   beforeEach(function(){
 
-    var OneToOneDouble = function() {
+    var OneToOneDouble = function(arguments) {
+      this.arguments = arguments;
     };
+
+    var LecturesDouble = function(arguments) {
+      this.arguments = arguments;
+    };
+
+    LecturesDouble.prototype.getResponse = function(args) {
+         return "https://github.com/makersacademy/course/wiki/Calendar";
+    };   
 
     OneToOneDouble.prototype.getResponse = function(args) {
-        return "https://github.com/makersacademy/course/wiki/121-and-Challenge-Review-slots"
+      if (this.arguments[0] == 'henry') {
+        return 'Available';
+      }
+      return "https://github.com/makersacademy/course/wiki/121-and-Challenge-Review-slots";
     };
 
-    hash = { '!bot 121': OneToOneDouble,
-             '!bot lectures': 'https://github.com/makersacademy/course/wiki/Calendar'
+
+
+    var utilityHash = { '121': OneToOneDouble,
+                    'lectures': LecturesDouble
     }
 
-    commandParser = new CommandParser(hash);
+    commandParser = new CommandParser(utilityHash);
   });
 
   it("return the correct content for the 121 command", function() {
@@ -29,16 +43,19 @@ describe("Command Parser", function() {
     });
   });
 
-   it("return the correct content when an argument is used", function() {
+  it("return the correct content when an argument is used", function() {
     commandParser.parse('!bot 121 henry', function(err,data) {
       expect(data).to.equal('Available');
     });
   });
 
-  it("return the correct content for the calendar command",  function() {
+  it("return the correct content for the lecture command",  function() {
     commandParser.parse('!bot lectures', function(err, data) {
       expect(data).to.equal('https://github.com/makersacademy/course/wiki/Calendar');
     });
   });
 
+  it("return the root command", function() {
+    expect(commandParser._commandStripper('!bot 121 henry')).to.equal('121')
+  });
 });
