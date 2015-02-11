@@ -13,7 +13,7 @@ describe('Makers GitHub', function() {
   it('should read a file from Makers GitHub', function(done) {
     var makers = new MakersGitHub();
     var expectedData;
-    makers.readFileInfo('.gitignore', function(data) {
+    makers.readFileInfo('.gitignore', function(err, data) {
       expectedData = data;
       console.log(expectedData);
 
