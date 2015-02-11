@@ -41,4 +41,41 @@ describe('Talks Utility', function() {
     expect(talksUtility.todaysEvents([steveEvent, billEvent, futureEvent], new Date(2015, 1, 11, 10))).to.equal('Here is the agenda for today: At 12:30 Steve Jobs will be giving a talk. At 18:00 Bill Gates will be giving a talk. ');
     done();
   })
+
+  it('returns tomorrows events', function(done) {
+    var today    = new Date(2015, 0, 1, 12, 30);
+    var tomorrow = new Date(2015, 0, 2, 12, 30);
+
+    var todayEventDouble = function() { 
+      this.summary = "Eric Schmidt";
+      this.start   = today;
+    }
+
+    var tomorrowEventDouble = function() { 
+      this.summary = "Elon Musk";
+      this.start   = tomorrow;
+    }
+
+    var todayEvent    = new todayEventDouble();
+    var tomorrowEvent = new tomorrowEventDouble();
+
+    expect(talksUtility.tomorrowsEvents([todayEvent,tomorrowEvent], today)).to.equal('Here is the agenda for tomorrow: At 12:30 Elon Musk will be giving a talk. ');
+    done();
+  });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

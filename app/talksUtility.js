@@ -28,7 +28,7 @@ TalksUtility.prototype.todaysEvents = function(events, nowTime) {
             event.start.getMonth() == nowTime.getMonth() &&
             event.start.getDate()  == nowTime.getDate());
   });
-  
+
   events = events.map(function(event) {
     var minutes = (event.start.getMinutes() < 10 ? "0" + event.start.getMinutes() : event.start.getMinutes())
 
@@ -37,7 +37,6 @@ TalksUtility.prototype.todaysEvents = function(events, nowTime) {
   });
 
   var outputString = "Here is the agenda for today: "
-
   for(var i = 0; i < events.length; i ++) {
     outputString += events[i];
   }
@@ -45,4 +44,48 @@ TalksUtility.prototype.todaysEvents = function(events, nowTime) {
   return outputString;
 };
 
+TalksUtility.prototype.tomorrowsEvents = function(events, nowTime) {
+  events = events.filter(function(event) {
+    return (event.start.getYear()  == nowTime.getYear() &&
+            event.start.getMonth() == nowTime.getMonth() &&
+            event.start.getDate()  == nowTime.getDate() + 1);
+  });
+
+  events = events.map(function(event) {
+    var minutes = (event.start.getMinutes() < 10 ? "0" + event.start.getMinutes() : event.start.getMinutes())
+
+    return "At " + event.start.getHours() + ":" + minutes +
+    " " + event.summary + " will be giving a talk. ";
+  });
+
+  var outputString = "Here is the agenda for tomorrow: "
+  for(var i = 0; i < events.length; i ++) {
+    outputString += events[i];
+  }
+
+  return outputString;
+};
+
+
+
 module.exports = TalksUtility;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
