@@ -1,12 +1,15 @@
 function Pill(api){
   this.api = api;
-  this.apiData = null;
-  this.translatedData = null;
 }
 
-// Pill.prototype.getResponse = function() {
-//   return this.getInfo(this.translate);
-// };
+Pill.prototype.getResponse = function(callback) {
+  var self = this;
+    this.getInfo(function(){
+      self.translate(function(data){
+        callback(data);
+      });
+    });
+};
 
 Pill.prototype.getInfo = function(callback) {
   var self = this;
@@ -14,15 +17,14 @@ Pill.prototype.getInfo = function(callback) {
     if(err) {
       callback(err);
     }
-     self.apiData = data
-     callback(self.apiData);
+     callback(data);
   });
 
 };
 
 Pill.prototype.translate = function(callback) {
-  this.translatedData = this.apiData.match(/\[(.*?)\]/g);
-  callback(this.translatedData)
+  var translated = this.apiData.match(/\[(.*?)\]/g);
+  callback(translated);
 };
 
 
