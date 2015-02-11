@@ -1,8 +1,6 @@
-var CommandParser = function() {
+var CommandParser = function(hash) {
 
-  this.commands = { '!bot 121': "https://github.com/makersacademy/course/wiki/121-and-Challenge-Review-slots",
-                    '!bot lectures': 'https://github.com/makersacademy/course/wiki/Calendar'
-  }
+  this.commands = hash;
 
 };
 
@@ -16,7 +14,8 @@ CommandParser.prototype.parse = function(command, callback) {
   // var arguments= commandStripper(command); // return arguments in array
 
   if(this.commands[command] != null) {
-    var response = this.commands[command];
+    var responseObject = new this.commands[command];
+    response = responseObject.getResponse();
     callback(null, response);
   } else {
     callback(true);
