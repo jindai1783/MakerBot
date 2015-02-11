@@ -62,6 +62,33 @@ describe('Talks Utility', function() {
     expect(talksUtility.tomorrowsEvents([todayEvent,tomorrowEvent], today)).to.equal('Here is the agenda for tomorrow: At 12:30 Elon Musk will be giving a talk. ');
     done();
   });
+
+  it('returns Fridays events', function(done) {
+    var today    = new Date(2015, 1, 11, 12, 30);
+    var friday   = new Date(2015, 1, 13, 12, 30)
+
+    var todayEventDouble = function() { 
+      this.summary = "Eric Schmidt";
+      this.start   = today;
+    }
+
+    var fridayEventDouble = function() { 
+      this.summary = "Michael Jackson";
+      this.start   = friday;
+    }
+
+    var futureEventDouble = function() { 
+      this.summary = "Elon Musk";
+      this.start   = new Date(2015, 3, 11, 18);
+    }
+
+    var todayEvent    = new todayEventDouble();
+    var fridayEvent   = new fridayEventDouble();
+    var futureEvent  = new futureEventDouble();
+
+    expect(talksUtility.dayEvents([todayEvent, fridayEvent, futureEvent], today, 5)).to.equal('Here is the agenda for Friday: At 12:30 Michael Jackson will be giving a talk. ');
+    done();
+  });
 });
 
 

@@ -8,7 +8,6 @@ TalksUtility.prototype.getResponse = function(args, callback) {
   if (args[0] === 'next') {
     this.getEvents(this.nextEvent);
   };
-
 };
 
 TalksUtility.prototype.getEvents = function(callback) {
@@ -59,6 +58,29 @@ TalksUtility.prototype.tomorrowsEvents = function(events, nowTime) {
   });
 
   var outputString = "Here is the agenda for tomorrow: "
+  for(var i = 0; i < events.length; i ++) {
+    outputString += events[i];
+  }
+
+  return outputString;
+};
+
+TalksUtility.prototype.dayEvents = function(events, nowTime, dayNum) {
+  events = events.filter(function(event) {
+    return (event.start.getYear()  == nowTime.getYear() &&
+            event.start.getMonth() == nowTime.getMonth() &&
+            event.start.getDate()  <= nowTime.getDate()+7 &&
+            event.start.getDay()   == dayNum);
+  });
+
+  events = events.map(function(event) {
+    var minutes = (event.start.getMinutes() < 10 ? "0" + event.start.getMinutes() : event.start.getMinutes())
+
+    return "At " + event.start.getHours() + ":" + minutes +
+    " " + event.summary + " will be giving a talk. ";
+  });
+
+  var outputString = "Here is the agenda for Friday: "
   for(var i = 0; i < events.length; i ++) {
     outputString += events[i];
   }
