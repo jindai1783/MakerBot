@@ -1,4 +1,4 @@
-// var CommandParser = require('../src/CommandParser.js');
+var CommandParser = require('../../app/CommandParser.js');
 
 describe("Command Parser", function() {
 
@@ -9,8 +9,14 @@ describe("Command Parser", function() {
   });
 
   it("it should return the correct content for the 121 command", function() {
-    commandParser.parse('!bot 121', function(data) {
+    commandParser.parse('!bot 121', function(err, data) {
       expect(data).toEqual('https://github.com/makersacademy/course/wiki/121-and-Challenge-Review-slots');
+    });
+  });
+
+  it("it should return the correct content for the calendar command",  function() {
+    commandParser.parse('!bot lectures', function(err, data) {
+      expect(data).toEqual('https://github.com/makersacademy/course/wiki/Calendar');
     });
   });
 
