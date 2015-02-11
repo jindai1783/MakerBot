@@ -32,13 +32,13 @@ TalksUtility.prototype.tomorrowsEvents = function(events, nowTime) {
 TalksUtility.prototype.dayEvents       = function(events, nowTime, dayNum) {
   events = this._filterForEventsInDateRange(events, nowTime, dayNum, 7);
 
-  var eventStrings = this._composeEventString(events);
+  var eventStrings = this._composeEventStrings(events);
   var outputString = this._composeOutputString(eventStrings, nowTime, dayNum);
 
   return outputString;
 };
 
-TalksUtility.prototype._composeEventString  = function(events) {
+TalksUtility.prototype._composeEventStrings  = function(events) {
   return events.map(function(event) {
     var minutes = (event.start.getMinutes() < 10 ? "0" + event.start.getMinutes() : event.start.getMinutes())
     
