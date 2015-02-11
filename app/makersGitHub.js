@@ -13,12 +13,10 @@ function MakersGitHub(){
 MakersGitHub.prototype.readFileInfo = function(fileName, callback) {
   
   this.repo.read('master', fileName, function(err, data) {
-    if (err) throw err;
-    if (callback){
+    if (err) {
       callback(data)
-    }else{
-      return data
-    };
+    }
+    callback(null, data);
   });
 };
 

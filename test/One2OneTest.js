@@ -21,7 +21,8 @@ describe('One2One', function() {
   
   it('should receive info from API', function(done) {
     one2one.getInfo(function(data) {
-      expect(one2one.apiData).to.equal('.DS_Store');
+      console.log(data);
+      expect(data).to.contain('.DS_Store');
       done();
     });  
   });
