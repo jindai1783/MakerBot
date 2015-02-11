@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "github-api": "^0.10.3",
-    "node-slackbot": "0.0.6"
+    "node-slackbot": "0.0.6",
+    "underscore": "^1.7.0"
   }
 }
