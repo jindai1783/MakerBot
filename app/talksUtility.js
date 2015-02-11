@@ -88,26 +88,4 @@ TalksUtility.prototype.dayEvents = function(events, nowTime, dayNum) {
   return outputString;
 };
 
-
-
 module.exports = TalksUtility;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
