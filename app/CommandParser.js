@@ -5,6 +5,7 @@ var CommandParser = function(utilityHash) {
 CommandParser.prototype.parse = function(command, callback) {
   var rootCommand = this._commandStripper(command);
   var arguments = this._argumentStripper(command);
+  
   if(this.commands[rootCommand] != null) {
     var responseObject = new this.commands[rootCommand](arguments);
     response = responseObject.getResponse();
