@@ -65,7 +65,7 @@ describe('Talks Utility', function() {
 
   it('returns Fridays events', function(done) {
     var today    = new Date(2015, 1, 11, 12, 30);
-    var friday   = new Date(2015, 1, 13, 12, 30)
+    var friday   = new Date(2015, 1, 13, 12, 30);
 
     var todayEventDouble = function() { 
       this.summary = "Eric Schmidt";

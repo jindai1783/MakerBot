@@ -1,7 +1,8 @@
 var GoogleCalendar = require('public-google-calendar')
 
 var TalksUtility = function() {
-  this.api    = new GoogleCalendar({ calendarId: 'iammakerbot@gmail.com' });
+  this.api  = new GoogleCalendar({ calendarId: 'iammakerbot@gmail.com' });
+  this.days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 };
 
 TalksUtility.prototype.getResponse = function(args, callback) {
@@ -22,47 +23,11 @@ TalksUtility.prototype.nextEvent = function(events) {
 };
 
 TalksUtility.prototype.todaysEvents = function(events, nowTime) {
-  events = events.filter(function(event) {
-    return (event.start.getYear()  == nowTime.getYear() &&
-            event.start.getMonth() == nowTime.getMonth() &&
-            event.start.getDate()  == nowTime.getDate());
-  });
-
-  events = events.map(function(event) {
-    var minutes = (event.start.getMinutes() < 10 ? "0" + event.start.getMinutes() : event.start.getMinutes())
-
-    return "At " + event.start.getHours() + ":" + minutes +
-    " " + event.summary + " will be giving a talk. ";
-  });
-
-  var outputString = "Here is the agenda for today: "
-  for(var i = 0; i < events.length; i ++) {
-    outputString += events[i];
-  }
-
-  return outputString;
+  return this.dayEvents(events, nowTime, nowTime.getDay());
 };
 
 TalksUtility.prototype.tomorrowsEvents = function(events, nowTime) {
-  events = events.filter(function(event) {
-    return (event.start.getYear()  == nowTime.getYear() &&
-            event.start.getMonth() == nowTime.getMonth() &&
-            event.start.getDate()  == nowTime.getDate() + 1);
-  });
-
-  events = events.map(function(event) {
-    var minutes = (event.start.getMinutes() < 10 ? "0" + event.start.getMinutes() : event.start.getMinutes())
-
-    return "At " + event.start.getHours() + ":" + minutes +
-    " " + event.summary + " will be giving a talk. ";
-  });
-
-  var outputString = "Here is the agenda for tomorrow: "
-  for(var i = 0; i < events.length; i ++) {
-    outputString += events[i];
-  }
-
-  return outputString;
+  return this.dayEvents(events, nowTime, nowTime.getDay()+1);
 };
 
 TalksUtility.prototype.dayEvents = function(events, nowTime, dayNum) {
@@ -80,12 +45,24 @@ TalksUtility.prototype.dayEvents = function(events, nowTime, dayNum) {
     " " + event.summary + " will be giving a talk. ";
   });
 
-  var outputString = "Here is the agenda for Friday: "
+  var dayString = this._getDayString(nowTime, dayNum);
+
+  var outputString = "Here is the agenda for " + dayString + ": ";
   for(var i = 0; i < events.length; i ++) {
     outputString += events[i];
   }
 
   return outputString;
+};
+
+TalksUtility.prototype._getDayString = function(nowTime, dayNum) {
+  if (nowTime.getDay()+1 === dayNum) {
+    return "tomorrow";
+  }
+  else if (nowTime.getDay() === dayNum) {
+    return "today";
+  }
+  else { return this.days[dayNum] };
 };
 
 module.exports = TalksUtility;
