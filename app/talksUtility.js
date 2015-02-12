@@ -5,9 +5,18 @@ var TalksUtility = function() {
 };
 
 TalksUtility.prototype.getResponse     = function(args, callback) {
-  if (args[0] === 'next') {
-    this.getEvents(this.nextEvent);
-  };
+  this.getEvents(function(events) {
+    if (args[0] === 'next') {
+      this.nextEvent(events);
+    }
+    else if (args[0]) === 'today') {
+      this.todaysEvents(events, new Date());
+    }
+    else if (args[0]) === 'tomorrow') {
+      this.tomorrowsEvents(events, new Date());
+    }
+    else if (args[0]) === ''
+  });  
 };
 
 TalksUtility.prototype.getEvents       = function(callback) {
