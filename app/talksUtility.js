@@ -1,7 +1,5 @@
-var GoogleCalendar = require('public-google-calendar')
-
-var TalksUtility = function() {
-  this.api          = new GoogleCalendar({ calendarId: 'iammakerbot@gmail.com' });
+var TalksUtility = function(api) {
+  this.api          = api;
   this.weekDayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 };
 
