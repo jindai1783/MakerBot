@@ -1,14 +1,11 @@
-var GoogleCalendar = require('public-google-calendar');
-
 var TalksUtility = function(api) {
   this.api          = new api({ calendarId: 'iammakerbot@gmail.com'});
   this.weekDayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 };
 
 TalksUtility.prototype.getResponse     = function(args, callback) {
-  console.log
-  console.log('getResponse was hit');
   var self = this;
+
   this.getEvents(function(events) {
     if      (args[0] === 'next') {
       callback(null, self.nextEvent(events))
@@ -19,7 +16,7 @@ TalksUtility.prototype.getResponse     = function(args, callback) {
     else if (args[0] === 'tomorrow') {
       callback(null, self.tomorrowsEvents(events, new Date()))
     }
-    else if (this.weekDayNames[self.capitalize(args[0])]) {
+    else if (self.weekDayNames.indexOf(self.capitalize(args[0])) >= 0) {
       callback(null, self.dayEvents(events, new Date(), self.weekDayNames.indexOf(self.capitalize(args[0]))))
     }
     else if (args[0] === 'help') {

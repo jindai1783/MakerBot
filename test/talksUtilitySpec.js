@@ -1,48 +1,87 @@
+// *note: I know this Spec looks scary. But most of it is just Doubles.
+
 var chai           = require('chai');
 var expect         = chai.expect;
-var TalksUtility   = require('../app/talksUtility.js')
-var GoogleCalendar = require('public-google-calendar')
+var TalksUtility   = require('../app/talksUtility.js');
 
 describe('Talks Utility', function() {
 
   var talksUtility;
 
-  describe('public interface returns relevant strings for the time argument', function() {
-
-    var GoogleCalendarDouble;
+  describe('public interface returns strings appropriate to the argument', function() {
 
     before(function() {
-      GoogleCalendarDouble = function(events) {
-        this.events = events };
-      GoogleCalendarDouble.prototype.getEvents = function(options, callback) {
-        callback(this.events) };
-    })
-      
 
-    it("'today'", function(done) {
-      var TodayEventDouble = function() { 
+      var nextTime   = new Date();
+      nextTime.setHours(nextTime.getHours() + 1);
+
+      var nextEventDouble = function() { 
         this.summary = "Steve Jobs";
-        this.start   = new Date();
+        this.start   = nextTime;
       }
 
-      var TomorrowEventDouble = function() { 
-        this.summary = "Some Guy";
-        this.start   = new Date();
+      var tomorrow   = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+
+      var tomorrowEventDouble = function() { 
+        this.summary = "Ptolemy Barnes";
+        this.start   = tomorrow;
       }
 
-      var todayEventDouble    = new TodayEventDouble();
-      var tomorrowEventDouble = new TodayEventDouble();
+      var mondayEventDouble = function() { 
+        this.summary = "Fred Flintstone";
+        this.start   = new Date(2015, 1, 16);;
+      }
 
-      talksUtility = new TalksUtility(new GoogleCalendarDouble([todayEventDouble, tomorrowEventDouble]));
+      var nextEvent      = new nextEventDouble();
+      var tomorrowEvent  = new tomorrowEventDouble();
+      var mondayEvent    = new mondayEventDouble();
 
-      done();
+      var GoogleCalDouble = function(option) {};
+      GoogleCalDouble.prototype.getEvents = function(options, callback) {
+        callback(null, [mondayEvent, tomorrowEvent, nextEvent]);
+      };
+      talksUtility        = new TalksUtility(GoogleCalDouble);
+    });
+
+    it("'next'", function(done) {
+
+      talksUtility.getResponse(['next'], function(err, string) {
+        expect(string).to.equal('The next event will be Steve Jobs');
+        done();
+      });
+    });
+
+    it("'tomorrow'", function(done) {
+
+      talksUtility.getResponse(['tomorrow'], function(err, string) {
+        expect(string).to.match(/Ptolemy Barnes will be giving a talk/);
+        done();
+      });
+    });
+
+    it("'monday'", function(done) {
+
+      talksUtility.getResponse(['monday'], function(err, string) {
+        expect(string).to.match(/Fred Flintstone will be giving a talk/);
+        done();
+      });
+    });
+
+    it("that is bad", function(done) {
+
+      talksUtility.getResponse(['gobble'], function(err, string) {
+        expect(string).to.equal("I do not understand 'gobble'. Type '!bot talks help' to view valid arguments.");
+        done();
+      });
     });
   });
 
   describe('returns strings describing events for', function() {
 
     before(function() {
-      talksUtility = new TalksUtility();
+      var GoogleCalDouble = function(option) {};
+      talksUtility = new TalksUtility(GoogleCalDouble);
     });
 
     it('the next event', function(done) {
