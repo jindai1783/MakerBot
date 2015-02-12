@@ -1,7 +1,7 @@
 var _ = require('underscore')._;
 
 function Pill(api){
- this.api = api;
+ this.api = new api();
  this.apiData = null;
  this.translatedData = null;
  this.pillLibrary = {};
@@ -9,21 +9,22 @@ function Pill(api){
 
 
 Pill.prototype.getResponse = function(args, callback) {
-  var self = this; 
- self.getInfo(function() {
+  var self = this;
+  self.getInfo(function() {
     self.translate();
     self.getLibrary();
-    callback(self.decision(args[0]));
- });
-}
+    callback(null, self.decision(args[0]));
+  });
+};
 
 Pill.prototype.decision = function(arg) {
- if(arg) {
+  if(arg) {
    return this.pillLibrary[arg];
- } else {
-   return Object.keys(this.pillLibrary);
- }
-}
+  } else {
+   var keys = Object.keys(this.pillLibrary)
+   return keys.join("\n");
+  }
+};
 
 Pill.prototype.getInfo = function(callback) {
  var self = this;
