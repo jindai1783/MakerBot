@@ -5,10 +5,11 @@ var commandParser = require('./commandParser');
 var One2One       = require('./One2One.js');
 var One2OneApi    = require('./makersGithub.js');
 
+var WolframUtility  = require('./wolframUtility');
 var TalksUtility    = require('./talksUtility');
 var TalksUtilityApi = require('public-google-calendar')
 
-var utilityHash   = { '121': One2One,    'talks' : TalksUtility }
+var utilityHash   = { '121': One2One,    'talks' : TalksUtility, 'q' : wolframUtility }
 
 var utilitiesApis = { '121': One2OneApi, 'talks' : TalksUtilityApi }
 
