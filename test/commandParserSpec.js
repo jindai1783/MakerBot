@@ -30,11 +30,10 @@ describe("Command Parser", function() {
       }
     };
 
-    var utilityHash = { '121': OneToOneDouble,
-                    'lectures': LecturesDouble
-    }
-
-    commandParser = new CommandParser(utilityHash);
+    var utilityHash     = { '121': OneToOneDouble, 'lectures': LecturesDouble };
+    var utilityApisHash = { '121': "", 'lectures': "" };
+    
+    commandParser = new CommandParser(utilityHash, utilityApisHash);
   });
 
   it("return the correct content for the 121 command", function() {

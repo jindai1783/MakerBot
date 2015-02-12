@@ -9,6 +9,7 @@ var TalksUtility    = require('./talksUtility');
 var TalksUtilityApi = require('public-google-calendar')
 
 var utilityHash   = { '121': One2One,    'talks' : TalksUtility }
+
 var utilitiesApis = { '121': One2OneApi, 'talks' : TalksUtilityApi }
 
 var commandEngine = new commandParser(utilityHash, utilitiesApis);
