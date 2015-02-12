@@ -5,25 +5,17 @@ function One2One(){
   this.apiData = null;
 }
 
-One2One.prototype.getInfo = function(callback) {
-  
+One2One.prototype.getResponse = function(args, callback) {
+
   this.api.readFileInfo('.gitignore', function(err, data){
     if(err) {
       callback(err);
     }
     this.apiData = data;
-    callback(this.apiData);
+    callback(err, this.apiData);
   });
 
 };
-
-One2One.prototype.returnResponse = function(data) {
-  return data;
-}
-
-One2One.prototype.getResponse = function() { 
-  return this.getInfo(this.returnResponse);
-}
 
 
 module.exports = One2One;
