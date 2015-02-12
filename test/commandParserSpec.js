@@ -28,8 +28,6 @@ describe("Command Parser", function() {
       return "https://github.com/makersacademy/course/wiki/121-and-Challenge-Review-slots";
     };
 
-
-
     var utilityHash = { '121': OneToOneDouble,
                     'lectures': LecturesDouble
     }
@@ -58,4 +56,15 @@ describe("Command Parser", function() {
   it("return the root command", function() {
     expect(commandParser._commandStripper('!bot 121 henry')).to.equal('121')
   });
+
+
+
+
+
+
+
+
+
+
+
 });
