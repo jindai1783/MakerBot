@@ -20,7 +20,7 @@ describe('challenge', function() {
 
   it('Should return names of challenge challengeLibrary', function(done){
     challenge.getResponse([], function(){
-      expect(challenge.challengeLibrary['blocks_procs_lambdas.md']).to.contain('https://github.com/makersacademy/course/blob/master/challenges/blocks_procs_lambdas.md');
+      expect(challenge.fileLibrary['blocks_procs_lambdas.md']).to.contain('https://github.com/makersacademy/course/blob/master/challenges/blocks_procs_lambdas.md');
       done();
      });
   });

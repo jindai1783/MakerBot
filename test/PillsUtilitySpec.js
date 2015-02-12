@@ -21,7 +21,7 @@ describe('pill', function() {
 
  it('Should return names of pills pillLibrary', function(done){
     pill.getResponse([], function(){
-     expect(pill.pillLibrary['IoPill.md']).to.contain('https://github.com/makersacademy/course/blob/master/pills/IoPill.md');
+     expect(pill.fileLibrary['IoPill.md']).to.contain('https://github.com/makersacademy/course/blob/master/pills/IoPill.md');
      done();
     });
  });
