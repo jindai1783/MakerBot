@@ -4,10 +4,11 @@ function Pill(api){
   this.api = api;
   this.apiData = null;
   this.translatedData = null;
-  this.sanitizedData = [];
+  this.pillNames = [];
+  this.pillLinks
 }
 
-Pill.prototype.getResponse = function(callback) {
+Pill.prototype.getResponse = function(name, callback) {
   var self = this;
     this.getInfo(function(){
       self.translate(function(data){
@@ -18,7 +19,7 @@ Pill.prototype.getResponse = function(callback) {
 
 Pill.prototype.getInfo = function(callback) {
   var self = this;
-  this.api.readFileInfo('pills', function(err, data){
+  this.api. readFileInfo('pills', function(err, data){
     if(err) {
       callback(err);
     }
@@ -29,21 +30,25 @@ Pill.prototype.getInfo = function(callback) {
 };
 
 Pill.prototype.translate = function(callback) {
-  var data = 'derp';
-  console.log(this.apiData);
-  console.log(this.apiData.length);
+  var data = JSON.parse(this.apiData);
   callback(this.translatedData = data);
 };
 
-// Pill.prototype.getSanitizedData = function(callback) {
-//   var dataSize = this.translatedData.length;
-//   for(i=0; i < dataSize; i++){
+Pill.prototype.getNames = function(callback) {
+  var dataSize = this.translatedData.length
+  for(i=0; i<dataSize; i++){
+    this.pillNames.push(this.translatedData[i].name)
+  };
+  callback(this.pillNames)
+};
 
-//     this.sanitizedData.push(this.translatedData[i].slice(1, -1));
-//   };
-//   console.log(this.sanitizedData);
-//   callback(this.sanitizedData);
-// };
+Pill.prototype.getLinks = function(callback) {
+  var dataSize = this.translatedData.length
+  for(i=0; i<dataSize; i++){
+    this.pillNames.push(this.translatedData[i].html_url)
+  };
+  callback(this.pillNames)
+};
 
 
 module.exports = Pill;

@@ -32,7 +32,7 @@ describe('pill', function() {
 
     pill.getInfo(function(){
       pill.translate(function(data){
-      expect(data).to.contain('[The command line]');
+      expect(data[0].name).to.contain('IoPill.md');
       done(); 
       });
     });
@@ -41,7 +41,7 @@ describe('pill', function() {
   it('have a getResponse function', function(done) {
 
     pill.getResponse(function(data){
-    expect(data).to.contain('[The command line]');
+    expect(data[0].name).to.contain('IoPill.md');
     done(); 
       });
     });
@@ -49,10 +49,19 @@ describe('pill', function() {
   it('it should sanitize data', function(done) {
 
     pill.getResponse(function(){
-      pill.getSanitizedData(function(data){
-      expect(data).to.contain('The command line')
+      pill.getNames(function(data){
+      expect(data[0]).to.contain('IoPill.md')
+    done(); 
+    });
+  });
+
+     it('it should sanitize data', function(done) {
+
+    pill.getResponse(function(){
+      pill.getLinks(function(data){
+      expect(data[0]).to.contain('https://github.com/makersacademy/course/blob/master/pills/IoPill.md')
     done(); 
     });
   });
 });
-   });
+});
