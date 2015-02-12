@@ -8,21 +8,22 @@ function Pill(api){
 }
 
 
-Pill.prototype.getResponse = function(args) {
+Pill.prototype.getResponse = function(args, callback) {
   var self = this; 
  self.getInfo(function() {
+    console.log('inside getResponse');
     self.translate();
+    console.log('after translate');
     self.getLibrary();
-    self.decision(args[0]);
+    console.log('after getLibrary');
+    callback(self.decision(args[0]));
  });
 };
 
 Pill.prototype.decision = function(arg) {
  if(arg) {
-   console.log(this.pillLibrary[arg]);
    return this.pillLibrary[arg];
  } else {
-   console.log(Object.keys(this.pillLibrary);
    return Object.keys(this.pillLibrary);
  }
 };
