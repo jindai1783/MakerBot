@@ -22,7 +22,7 @@ describe('pill', function() {
   it('should receive info from API', function(done) {
     
     pill.getInfo(function(data) {
-      expect(data).to.contain('# Knowledge');
+      expect(data).to.contain('IoPill.md');
       done(); 
     });
      
