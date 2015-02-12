@@ -89,6 +89,7 @@ TalksUtility.prototype._filterForEventsInDateRange = function(events, nowTime, d
     return (event.start.getYear()  == nowTime.getYear() &&
             event.start.getMonth() == nowTime.getMonth() &&
             event.start.getDate()  <= nowTime.getDate() + range &&
+            event.start.getTime()   > nowTime.getTime() &&
             event.start.getDay()   == dayNum);
   });
 };
