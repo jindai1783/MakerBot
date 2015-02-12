@@ -32,10 +32,27 @@ describe('pill', function() {
 
     pill.getInfo(function(){
       pill.translate(function(data){
-        expect(data).to.contain('[The command line]');
+      expect(data).to.contain('[The command line]');
       done(); 
       });
     });
   });
 
+  it('have a getResponse function', function(done) {
+
+    pill.getResponse(function(data){
+    expect(data).to.contain('[The command line]');
+    done(); 
+      });
+    });
+
+  it('it should sanitize data', function(done) {
+
+    pill.getResponse(function(){
+      pill.linkGenerator(function(data){
+      expect(data).to.contain('The command line')
+    done(); 
+    });
+  });
 });
+   });
