@@ -3,8 +3,11 @@ var bot = new slackbot('xoxb-3664957276-x4H5juXjVNiHKheMYsz1VdHa');
 
 var One2One       = require('./One2One.js');
 var commandParser = require('./commandParser');
+var TalksUtility = require('./talksUtility');
 
-var utilityHash = { '121': One2One }
+var utilityHash = { '121': One2One,
+                    'talks' : TalksUtility
+                  }
 var commandEngine = new commandParser(utilityHash);
 
 bot.use(function(message, cb) {

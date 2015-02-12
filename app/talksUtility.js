@@ -1,9 +1,13 @@
-var TalksUtility = function(api) {
-  this.api          = api;
+var GoogleCalendar = require('public-google-calendar');
+
+var TalksUtility = function() {
+  this.api          = new GoogleCalendar({ calendarId: 'iammakerbot@gmail.com'});
   this.weekDayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 };
 
 TalksUtility.prototype.getResponse     = function(args, callback) {
+  console.log
+  console.log('getResponse was hit');
   var self = this;
   this.getEvents(function(events) {
     if      (args[0] === 'next') {
@@ -58,7 +62,7 @@ TalksUtility.prototype.dayEvents       = function(events, nowTime, dayNum) {
 TalksUtility.prototype._composeEventStrings  = function(events) {
   return events.map(function(event) {
     var minutes = (event.start.getMinutes() < 10 ? "0" + event.start.getMinutes() : event.start.getMinutes())
-    
+
     return "At " + event.start.getHours() + ":" + minutes +
     " " + event.summary + " will be giving a talk. ";
   });
@@ -79,7 +83,7 @@ TalksUtility.prototype._getDayString   = function(nowTime, dayNum) {
   else if (nowTime.getDay() === dayNum) {
     return "today"    }
 
-  else { 
+  else {
     return this.weekDayNames[dayNum] };
 };
 

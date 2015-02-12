@@ -7,7 +7,7 @@ CommandParser.prototype.parse = function(command, callback) {
   var arguments = this._argumentStripper(command);
 
   if(this.commands[rootCommand] != null) {
-    var responseObject = new this.commands[rootCommand](arguments);
+    var responseObject = new this.commands[rootCommand];
     response = responseObject.getResponse(arguments, function(err, response) {
       callback(null, response);
     });
