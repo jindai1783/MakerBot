@@ -9,7 +9,7 @@ var WolframUtility  = require('./wolframUtility');
 var TalksUtility    = require('./talksUtility');
 var TalksUtilityApi = require('public-google-calendar')
 
-var utilityHash   = { '121': One2One,    'talks' : TalksUtility, 'q' : wolframUtility }
+var utilityHash   = { '121': One2One,    'talks' : TalksUtility, 'q' : WolframUtility }
 
 var utilitiesApis = { '121': One2OneApi, 'talks' : TalksUtilityApi }
 
