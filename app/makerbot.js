@@ -1,14 +1,17 @@
-var slackbot = require('node-slackbot');
-var bot = new slackbot('xoxb-3664957276-x4H5juXjVNiHKheMYsz1VdHa');
+var slackbot      = require('node-slackbot');
+var bot           = new slackbot('xoxb-3664957276-x4H5juXjVNiHKheMYsz1VdHa');
+var commandParser = require('./commandParser');
 
 var One2One       = require('./One2One.js');
-var commandParser = require('./commandParser');
-var TalksUtility = require('./talksUtility');
+var One2OneApi    = require('./makersGithub.js');
 
-var utilityHash = { '121': One2One,
-                    'talks' : TalksUtility
-                  }
-var commandEngine = new commandParser(utilityHash);
+var TalksUtility    = require('./talksUtility');
+var TalksUtilityApi = require('public-google-calendar')
+
+var utilityHash   = { '121': One2One,    'talks' : TalksUtility }
+var utilitiesApis = { '121': One2OneApi, 'talks' : TalksUtilityApi }
+
+var commandEngine = new commandParser(utilityHash, utilitiesApis);
 
 bot.use(function(message, cb) {
   if ('message' == message.type) {

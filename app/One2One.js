@@ -1,7 +1,7 @@
 var MakersGithub = require('./makersGithub.js');
 
-function One2One(){
-  this.api = new MakersGithub();
+function One2One(api){
+  this.api = new api();
   this.apiData = null;
 }
 
