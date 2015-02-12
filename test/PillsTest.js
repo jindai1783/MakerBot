@@ -26,20 +26,10 @@ describe('pill', function() {
 
  it('translate data', function(done) {
    pill.getInfo(function(){
-     pill.translate(function(data){
+     pill.translate();
      expect(data[0].name).to.contain('IoPill.md');
      done(); 
-     });
-   });
- });
-
- it('it should sanitize data', function(done) {
-   pill.getResponse(function(){
-     pill.getLibrary(function(data){
-       expect(data['strings.md']).to.contain('https://github.com/makersacademy/course/blob/master/pills/strings.md');
-       done(); 
-     });
-   });
+    });
  });
 
 
@@ -49,6 +39,5 @@ describe('pill', function() {
      done();
    });
  });
-
-
 });
+
