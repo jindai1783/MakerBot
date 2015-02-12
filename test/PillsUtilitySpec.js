@@ -14,21 +14,16 @@ describe('pill', function() {
 
 
  it('Should return names of pills', function(done){
-  console.log('hello');
     pill.getResponse([], function(){
-      // console.log('hello2');
-      // // console.log(pill.apiData);
-      // expect(pill.translatedData).to.contain('IoPill.md');
-      // console.log('hello after expect');
-      // done();
-      // console.log('hello after done');
+      console.log('hello2');
+      expect(pill.translatedData[0].name).to.contain('IoPill.md');
+      done();
     }); 
-  console.log('hello outside pill response');
  });
 
  it('Should return names of pills pillLibrary', function(done){
     pill.getResponse([], function(){
-     expect(pill.pillLibrary).to.contain('IoPill.md');
+     expect(pill.pillLibrary['IoPill.md']).to.contain('https://github.com/makersacademy/course/blob/master/pills/IoPill.md');
      done();
     }); 
  });

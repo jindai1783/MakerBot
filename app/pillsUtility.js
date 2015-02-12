@@ -11,11 +11,8 @@ function Pill(api){
 Pill.prototype.getResponse = function(args, callback) {
   var self = this; 
  self.getInfo(function() {
-    console.log('inside getResponse');
     self.translate();
-    console.log('after translate');
     self.getLibrary();
-    console.log('after getLibrary');
     callback(self.decision(args[0]));
  });
 };
