@@ -12,16 +12,30 @@ describe('Talks Utility', function() {
     var GoogleCalendarDouble;
 
     before(function() {
-      GoogleCalendarDouble = function() {
-        GoogleCalendarDouble.prototype.getEvents = function(first_argument) {
-          // body...
-        };
-      }
-      talksUtility         = new TalksUtility(new GoogleCalendarDouble());
-    });
+      GoogleCalendarDouble = function(events) {
+        this.events = events };
+      GoogleCalendarDouble.prototype.getEvents = function(options, callback) {
+        callback(this.events) };
+    })
+      
 
     it("'today'", function(done) {
+      var TodayEventDouble = function() { 
+        this.summary = "Steve Jobs";
+        this.start   = new Date();
+      }
 
+      var TomorrowEventDouble = function() { 
+        this.summary = "Some Guy";
+        this.start   = new Date();
+      }
+
+      var todayEventDouble    = new TodayEventDouble();
+      var tomorrowEventDouble = new TodayEventDouble();
+
+      talksUtility = new TalksUtility(new GoogleCalendarDouble([todayEventDouble, tomorrowEventDouble]));
+
+      expect()
       done();
     });
   });
@@ -104,8 +118,8 @@ describe('Talks Utility', function() {
         this.start   = new Date(2015, 3, 11, 18);
       }
 
-      var todayEvent    = new todayEventDouble();
-      var fridayEvent   = new fridayEventDouble();
+      var todayEvent   = new todayEventDouble();
+      var fridayEvent  = new fridayEventDouble();
       var futureEvent  = new futureEventDouble();
 
       expect(talksUtility.dayEvents([todayEvent, fridayEvent, futureEvent], today, 5)).to.equal('Here is the agenda for Friday: At 12:30 Michael Jackson will be giving a talk. ');
