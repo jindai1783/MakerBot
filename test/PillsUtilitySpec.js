@@ -5,11 +5,10 @@ var Pill = require('../app/pillsUtility.js');
 
 describe('pill', function() {
 
- var makers, pill;
+ var pill;
 
  before(function(){
-   makers = new MakersGitHub();
-   pill = new Pill(makers);
+   pill = new Pill(MakersGitHub);
  });
 
 
@@ -28,11 +27,3 @@ describe('pill', function() {
  });
 
 });
-
-
-
-
-
-
-
-

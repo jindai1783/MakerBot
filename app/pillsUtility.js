@@ -33,11 +33,11 @@ Pill.prototype.getInfo = function(callback) {
    self.apiData = data;
    callback(self.apiData);
  });
-}
+};
 
 Pill.prototype.translate = function() {
  return this.translatedData = JSON.parse(this.apiData);
-}
+};
 
 Pill.prototype.getLibrary = function() {
  var dataSize = this.translatedData.length;
@@ -45,7 +45,7 @@ Pill.prototype.getLibrary = function() {
    this.pillLibrary[this.translatedData[i].name] = this.translatedData[i].html_url;
  }
  return this.pillLibrary;
-}
+};
 
 
 
