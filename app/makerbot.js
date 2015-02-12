@@ -7,11 +7,13 @@ var One2OneApi    = require('./makersGithub.js');
 
 var WolframUtility  = require('./wolframUtility');
 var TalksUtility    = require('./talksUtility');
-var TalksUtilityApi = require('public-google-calendar')
+var MakersGithub    = require('./makersGithub');
+var TalksUtilityApi = require('public-google-calendar');
+var PillsUtility    = require('./pillsUtility');
 
-var utilityHash   = { '121': One2One,    'talks' : TalksUtility, 'q' : WolframUtility }
+var utilityHash   = { '121': One2One, 'talks' : TalksUtility, 'q' : WolframUtility, 'pills' : PillsUtility }
 
-var utilitiesApis = { '121': One2OneApi, 'talks' : TalksUtilityApi }
+var utilitiesApis = { '121': One2OneApi, 'talks' : TalksUtilityApi, 'pills' : MakersGithub }
 
 var commandEngine = new commandParser(utilityHash, utilitiesApis);
 

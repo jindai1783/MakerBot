@@ -1,30 +1,29 @@
 var _ = require('underscore')._;
 
 function Pill(api){
- this.api = api;
+ this.api = new api();
  this.apiData = null;
  this.translatedData = null;
  this.pillLibrary = {};
 }
 
 
-Pill.prototype.getResponse = function(args) {
-  var self = this; 
- self.getInfo(function() {
+Pill.prototype.getResponse = function(args, callback) {
+  var self = this;
+  self.getInfo(function() {
     self.translate();
     self.getLibrary();
-    self.decision(args[0]);
- });
+    callback(null, self.decision(args[0]));
+  });
 };
 
 Pill.prototype.decision = function(arg) {
- if(arg) {
-   console.log(this.pillLibrary[arg]);
+  if(arg) {
    return this.pillLibrary[arg];
- } else {
-   console.log(Object.keys(this.pillLibrary);
-   return Object.keys(this.pillLibrary);
- }
+  } else {
+   var keys = Object.keys(this.pillLibrary)
+   return keys.join("\n");
+  }
 };
 
 Pill.prototype.getInfo = function(callback) {

@@ -5,20 +5,24 @@ var WolframAPI = function() {
 };
 
 WolframAPI.prototype.getResponse = function(question, callback) {
+  var question = question.join(" ");
+  this.ask(question, function(err, answer) {
+    callback(null, answer);
+  });
+};
+
+WolframAPI.prototype.ask = function(question, callback) {
 
   var data = {
-      query: question,
-      primary: true
+    query: question,
+    primary: true
   };
 
   wolfram.ask(data, function(err, results) {
-    if(err) {
-      err;
-    }
-    if (results.pod[1].subpod[0].plaintext[0] === null) {
-      return callback("I couldn't find that.");
+    if(results.$.success === 'false' || err) {
+      callback(true, "Sorry, I don't know what you mean.");
     } else {
-      return callback(results.pod[1].subpod[0].plaintext[0]);
+      callback(null, results.pod[1].subpod[0].plaintext[0]);
     }
   });
 
