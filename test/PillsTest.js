@@ -49,7 +49,7 @@ describe('pill', function() {
   it('it should sanitize data', function(done) {
 
     pill.getResponse(function(){
-      pill.linkGenerator(function(data){
+      pill.getSanitizedData(function(data){
       expect(data).to.contain('The command line')
     done(); 
     });

@@ -4,7 +4,7 @@ function Pill(api){
   this.api = api;
   this.apiData = null;
   this.translatedData = null;
-  this.sanitizedData = null;
+  this.sanitizedData = [];
 }
 
 Pill.prototype.getResponse = function(callback) {
@@ -33,13 +33,13 @@ Pill.prototype.translate = function(callback) {
   callback(this.translatedData = data);
 };
 
-Pill.prototype.linkGenerator = function(callback) {
-  console.log(this.translatedData);
+Pill.prototype.getSanitizedData = function(callback) {
   var dataSize = this.translatedData.length;
   for(i=0; i < dataSize; i++){
-    console.log('hello');
-    console.log(i);
+
+    this.sanitizedData.push(this.translatedData[i].slice(1, -1));
   };
+  console.log(this.sanitizedData);
   callback(this.sanitizedData);
 };
 
