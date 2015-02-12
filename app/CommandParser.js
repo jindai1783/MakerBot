@@ -1,13 +1,15 @@
-var CommandParser = function(utilityHash) {
-  this.commands = utilityHash;
+var CommandParser = function(utilitiesHash, utilitiesApiHash) {
+  this.utilities     = utilitiesHash;
+  this.utilitiesApis = utilitiesApiHash;
 };
 
 CommandParser.prototype.parse = function(command, callback) {
   var rootCommand = this._commandStripper(command);
-  var arguments = this._argumentStripper(command);
+  var arguments   = this._argumentStripper(command);
 
-  if(this.commands[rootCommand] != null) {
-    var responseObject = new this.commands[rootCommand];
+  if(this.utilities[rootCommand] != null) {
+    var responseObject = new this.utilities[rootCommand](this.utilitiesApis[rootCommand]);
+
     response = responseObject.getResponse(arguments, function(err, response) {
       callback(null, response);
     });
