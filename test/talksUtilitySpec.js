@@ -75,6 +75,14 @@ describe('Talks Utility', function() {
         done();
       });
     });
+
+    it("when it is empty", function(done) {
+
+      talksUtility.getResponse([], function(err, string) {
+        expect(string).to.equal('The next event will be Steve Jobs');
+        done();
+      });
+    });
   });
 
   describe('returns strings describing events for', function() {
