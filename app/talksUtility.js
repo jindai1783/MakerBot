@@ -1,22 +1,32 @@
 var GoogleCalendar = require('public-google-calendar')
 
 var TalksUtility = function() {
-  this.api  = new GoogleCalendar({ calendarId: 'iammakerbot@gmail.com' });
+  this.api          = new GoogleCalendar({ calendarId: 'iammakerbot@gmail.com' });
+  this.weekDayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 };
 
 TalksUtility.prototype.getResponse     = function(args, callback) {
+  var self = this;
   this.getEvents(function(events) {
-    if (args[0] === 'next') {
-      this.nextEvent(events);
+    if      (args[0] === 'next') {
+      callback(null, self.nextEvent(events))
     }
-    else if (args[0]) === 'today') {
-      this.todaysEvents(events, new Date());
+    else if (args[0] === 'today') {
+      callback(null, self.todaysEvents(events, new Date()))
     }
-    else if (args[0]) === 'tomorrow') {
-      this.tomorrowsEvents(events, new Date());
+    else if (args[0] === 'tomorrow') {
+      callback(null, self.tomorrowsEvents(events, new Date()))
     }
-    else if (args[0]) === ''
-  });  
+    else if (this.weekDayNames[self.capitalize(args[0])]) {
+      callback(null, self.dayEvents(events, new Date(), self.weekDayNames.indexOf(self.capitalize(args[0]))))
+    }
+    else if (args[0] === 'help') {
+      callback(null, 'Help command is not yet implemented!')
+    }
+    else {
+      callback(null, ("I do not understand '" + args[0] + "'. Type '!bot talks help' to view valid arguments."))
+    }
+  });
 };
 
 TalksUtility.prototype.getEvents       = function(callback) {
@@ -72,7 +82,7 @@ TalksUtility.prototype._getDayString   = function(nowTime, dayNum) {
     return "today"    }
 
   else { 
-    return ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayNum] };
+    return this.weekDayNames[dayNum] };
 };
 
 TalksUtility.prototype._filterForEventsInDateRange = function(events, nowTime, dayNum, range) {
@@ -82,6 +92,10 @@ TalksUtility.prototype._filterForEventsInDateRange = function(events, nowTime, d
             event.start.getDate()  <= nowTime.getDate() + range &&
             event.start.getDay()   == dayNum);
   });
+};
+
+TalksUtility.prototype.capitalize = function(string) {
+  return (string.charAt(0).toUpperCase() + string.substring(1));
 };
 
 module.exports = TalksUtility;
