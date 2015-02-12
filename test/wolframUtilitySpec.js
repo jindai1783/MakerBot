@@ -12,8 +12,7 @@ describe("wolframUtility", function() {
 
   it("it should return the correct response", function(done) {
     this.timeout(10000);
-    wolframAPI.getResponse("What is the airspeed velocity of an unladen swallow?", function(answer) {
-      console.log(answer);
+    wolframAPI.getResponse("What is the airspeed velocity of an unladen swallow?".split(" "), function(err, answer) {
       expect(answer).to.contain('25 mph');
       done();
     });
