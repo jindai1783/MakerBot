@@ -35,7 +35,6 @@ describe('Talks Utility', function() {
 
       talksUtility = new TalksUtility(new GoogleCalendarDouble([todayEventDouble, tomorrowEventDouble]));
 
-      expect()
       done();
     });
   });
