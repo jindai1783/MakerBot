@@ -15,7 +15,7 @@ Pill.prototype.getResponse = function(args, callback) {
     self.getLibrary();
     callback(self.decision(args[0]));
  });
-};
+}
 
 Pill.prototype.decision = function(arg) {
  if(arg) {
@@ -23,7 +23,7 @@ Pill.prototype.decision = function(arg) {
  } else {
    return Object.keys(this.pillLibrary);
  }
-};
+}
 
 Pill.prototype.getInfo = function(callback) {
  var self = this;
@@ -32,11 +32,11 @@ Pill.prototype.getInfo = function(callback) {
    self.apiData = data;
    callback(self.apiData);
  });
-};
+}
 
 Pill.prototype.translate = function() {
  return this.translatedData = JSON.parse(this.apiData);
-};
+}
 
 Pill.prototype.getLibrary = function() {
  var dataSize = this.translatedData.length;
@@ -44,7 +44,7 @@ Pill.prototype.getLibrary = function() {
    this.pillLibrary[this.translatedData[i].name] = this.translatedData[i].html_url;
  }
  return this.pillLibrary;
-};
+}
 
 
 
