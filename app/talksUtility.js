@@ -7,7 +7,7 @@ TalksUtility.prototype.getResponse     = function(args, callback) {
   var self = this;
 
   this.getEvents(function(events) {
-    if      (args[0] === 'next') {
+    if      (args[0] === 'next' || args[0] === undefined) {
       callback(null, self.nextEvent(events))
     }
     else if (args[0] === 'today') {
