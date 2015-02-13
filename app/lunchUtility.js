@@ -36,7 +36,7 @@ if (args[0] === 'random') {
   };
 };
 
-Lunch.prototype.getAddress = function(arg) {
+Lunch.prototype.getAddress = function(args) {
   var arg = args.join(' ');
   var address = this.restaurants[arg];
     if(address){
