@@ -24,4 +24,11 @@ describe('Lunch', function() {
      done();
     });
   });
+
+ it('Should return a random restaurant', function(done){
+    lunch.getResponse(['random'], function(){
+      expect(lunch.response).not.to.equal(null);
+      done();
+    });
+  });
 });
