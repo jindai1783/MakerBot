@@ -5,7 +5,8 @@ var commands   = [ '121',
                    'challenge',
                    'help',
                    'knocknock',
-                   'lunch'
+                   'lunch',
+                   'help'
                   ]
 
 module.exports = commands;
