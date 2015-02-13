@@ -18,7 +18,7 @@ describe('Lunch', function() {
     });
   });
 
- it('Should return names of places to eat for lunch', function(done){
+ it('Should return the address of a specific restaurant', function(done){
     lunch.getResponse(['Bleecker St. Burger'], function(){
      expect(lunch.response).to.contain('65A Brushfield St');
      done();
