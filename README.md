@@ -1,78 +1,61 @@
-I am MakerBot
+[![Code Climate](https://codeclimate.com/repos/54ddc110e30ba070710052ce/badges/c04aa5a3fc98b0c98879/gpa.svg)](https://codeclimate.com/repos/54ddc110e30ba070710052ce/feed)
 
-## Tutorial
+## What is Makerbot?
 
-There was a major bug in async mocha testing at a stage. This is resolved, and the solution is written here in the test file and main file:
+Makerbot is the digital assistant for Makers Academy. It was born out of a need for a user interface to pull together the resources we all use regularly. It lives inside the Makers' Slack environment. Makerbot is modular and open source so if you have any ideas you would like incorporated into Makerbot, get coding! See the section: Writing Modules for Makerbot if you would like to know how.
 
-```javascript
-var chai = require('chai');
-var phantom = require('phantomjs');
-var expect = chai.expect;
-var MakersGitHub = require('../makersGitHub.js');
+## How to Use Makerbot
 
-describe('Makers GitHub', function() {
+To get my attention, click on me in the Makers' Slackbot and say 'mbot' followed by a command:
 
-  it('should pass', function() {
-    var makers = new MakersGitHub();
-    expect(makers.repo).to.not.equal(null);
-  });
+* **help** - will show you all commands. Makerbot is always updating so it's always good to check my help commands e.g. 'mbot help'
+* **pills** - will show all the Makers pills - use with an argument to get the link - e.g. 'mbot pills' followed by 'mbot pills pill.md'
+* **challenges** - will show all the Makers challenges - use with an argument to get the link - e.g. 'mbot challenges' followed by 'mbot challenges challenge.md'
+* **talks** - will show you the talks taking place - use with the following arguments: 'next', 'today' and 'tomorrow' e.g. 'mbot talks next Monday'
+* **121** - will show you the 121 schedule at Makers (remember to login!) e.g. 'mbot 121'
+* **q** - will answer your question using Wolfram Alpha e.g. "mbot q 'What's the airspeed of an unladen swallow?'"
 
-  it('should read a file from Makers GitHub', function(done) {
-    var makers = new MakersGitHub();
-    var expectedData;
-    makers.readFileInfo('.gitignore', function(data) {
-      expectedData = data;
-      console.log(expectedData);
+## Powered By
 
-      //-------------------------------------------------
-      //<1> expect sitting inside this callback, can work
-      //-------------------------------------------------
-      expect(expectedData).to.contain('DS');
+* Javascript
+* Node.js
+* Mocha
+* Chai
+* Grunt
+* Google Calendar
+* Wolfram Alpha
+* Github
 
-      done();
-    });
-  });
+## Team
 
-});
+* Clint Pijuan
+* Danielle Demkiw
+* Ptolemy Barnes
+* Jin Dai
+Jacob Mitchinson
 
-//---------------------------------------------------------------
-//<3> We need to let Sam to add makerbots into the course repo!!!
-//---------------------------------------------------------------
-```
 
-```javascript
-//---------------------------------------------------------------
-//<4> Check the username, is it mis-spelled as "makersbot"? Yeah?
-//---------------------------------------------------------------
+## Writing Modules for Makerbot
 
-// var Github = require('github-api');
-// var github = new Github({
-//   username: "makerbots",
-//   password: '1qwerty',
-//   auth: "basic"
-// });
+Makerbot has a standarised way of incorporating new modules. This makes it easy to write new modules for Makerbot. When creating a new module the public interface of that module should be a single #getResponse method. That method should take two arguments: arguments you wish to use with Makerbot e.g. 'mbot superawesome moreawesome' and a callback which will callback to the commandParser. For example:
 
-//----------------------------------------
-//<5> Remember to RETYPE the password here
-//----------------------------------------
-var Github = require('github-api'); var github = new Github({username: "jindai1783",password: "xxxxxxxxxxxx",auth: "basic"});
+````var api = require('api');
+var readAPI = api();
 
-//----------------------------------------------------------------
-//<2> Private Repo issue - makerbots cannot access PRIVATE course
-//    You can try to run on terminal - the data will be 'NULL'!!!
-//----------------------------------------------------------------
+var SuperAwesomeModule = function() {
 
-function MakersGitHub(){
-  this.repo = github.getRepo('makersacademy', 'course');
-}
-
-MakersGitHub.prototype.readFileInfo = function(fileName, callback) {
-  
-  this.repo.read('master', fileName, function(err, data) {
-    if (err) throw err;
-    callback(data);
-  });
 };
 
-module.exports = MakersGitHub;
-```
+SuperAwesomeModule.prototype.getResponse = function(arguments, callback) {
+    if(arguments === 'moreawesome') {
+        readAPI.fetch("I want some awesome things from you", function(awesomethings){
+            callback(awesomethings);
+        });
+    };
+};
+````
+
+
+
+
+
