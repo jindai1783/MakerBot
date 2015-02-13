@@ -1,4 +1,4 @@
-var commands = require('./config/commands');
+var commands = require('./config/commandsList');
 
 var HelpUtility = function() {
 
@@ -7,7 +7,11 @@ var HelpUtility = function() {
 
 HelpUtility.prototype.getResponse = function(args, callback) {
 
-  callback(null, Object.keys(commands).join('\n'));
+  var newCommands = commands.map(function(command) {
+    return 'You can say: mbot ' + command;
+  });
+
+  callback(null, newCommands.join('\n'));
 
 };
 

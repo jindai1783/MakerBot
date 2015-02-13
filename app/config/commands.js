@@ -6,6 +6,7 @@ var ChallengeUtility  = require('../challengeUtility');
 var JokesUtility      = require('../jokesUtility');
 var LunchUtility      = require('../lunchUtility');
 var StudentUtility    = require('../studentUtility');
+var HelpUtility       = require('../helpUtility');
 
 
 var commands   = { '121'        : One2One,
@@ -15,7 +16,8 @@ var commands   = { '121'        : One2One,
                    'challenges' : ChallengeUtility,
                    'knockknock' : JokesUtility,
                    'lunch'      : LunchUtility,
-                   'student'    : StudentUtility
+                   'students'    : StudentUtility,
+                   'help'       : HelpUtility
                   }
 
 module.exports = commands;
