@@ -19,7 +19,7 @@ describe('Lunch', function() {
   });
 
  it('Should return the address of a specific restaurant', function(done){
-    lunch.getResponse(['Bleecker St. Burger'], function(){
+    lunch.getResponse(['Bleecker', 'St.', 'Burger'], function(){
      expect(lunch.response).to.contain('65A Brushfield St');
      done();
     });

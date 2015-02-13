@@ -15,18 +15,43 @@ Lunch.prototype.getResponse = function(args, callback) {
   var self = this;
   this.getInfo(function() {
     self.getRestaurants();
-    callback(null, self.response = self.decision(args[0]));
+    callback(null, self.response = self.decision(args));
   });
 };
 
-Lunch.prototype.decision = function(arg) {
-  if(arg) {
-   var address = this.restaurants[arg];
-   return address.join("\n");
+Lunch.prototype.decision = function(args) {
+  if(args[0] != null){
+    return this.translateArgs(args);
   } else {
    var keys = Object.keys(this.restaurants);
    return keys.join("\n");
   }
+};
+
+Lunch.prototype.translateArgs = function(args) {
+if (args[0] === 'random') {
+    return this.randomRestaurant();
+  } else {
+    return this.getAddress(args);
+  };
+};
+
+Lunch.prototype.getAddress = function(args) {
+  var arg = args.join(' ');
+  var address = this.restaurants[arg];
+    if(address){
+      return address.join(" ")
+    }else{
+      return "No restaurant found."
+    };
+};
+
+Lunch.prototype.randomRestaurant = function() {
+  console.log('I am random');
+  var keys = Object.keys(this.restaurants); 
+  var random = keys[Math.floor(Math.random() * keys.length)];
+  console.log(random);
+  return random;
 };
 
 Lunch.prototype.getInfo = function(callback) {
@@ -45,6 +70,7 @@ Lunch.prototype.getRestaurants = function() {
  }
  return this.restaurants;
 };
+
 
 module.exports = Lunch;
 
