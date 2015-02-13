@@ -4,11 +4,12 @@ var WolframUtility    = require('../wolframUtility');
 var PillsUtility      = require('../pillsUtility');
 var ChallengeUtility  = require('../challengeUtility');
 
-var commands   = { '121': One2One,
-                   'talks' : TalksUtility,
-                   'q' : WolframUtility,
-                   'pills' : PillsUtility,
-                   'challenge' : ChallengeUtility
+
+var commands   = { '121'       : One2One,
+                   'talks'     : TalksUtility,
+                   'q'         : WolframUtility,
+                   'pills'     : PillsUtility,
+                   'challenges' : ChallengeUtility,
                   }
 
 module.exports = commands;
