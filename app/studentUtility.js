@@ -40,8 +40,8 @@ var allStudents = {
   'Jonathan' : ['I\'m so depressed about not going skiing this weekend.'],                     
   'Josh'     : ['Hi'],                 
   'Kieran'   : ['Mmmmmmm, nuts'],                   
-  'Luke'     : [''],                 
-  'Marcin'   : [''],                  
+  'Luke'     : ['Hi'],                 
+  'Marcin'   : ['Hi'],                  
   'Matteo'   : ['Hi'],                   
   'Oliver'   : ['I forgot my football kit'],                   
   'Ptolemy'  : ['Thats a great idea, but let me tell you why you are wrong.', 
@@ -50,5 +50,5 @@ var allStudents = {
   'Richard'  : ['Hi'],                    
   'Sanda'    : ['Pushup contest FTW!!'],                  
   'Steph'    : ['Hi'],
-  'Sam'      : ['Pairing Pro']  
+  'Sam'      : ['WWWRRAAAARRR! I am a knowledge predator']
 }; 

@@ -11,11 +11,15 @@ describe('student', function() {
   });
 
   it('Should give the names of all students at Makers', function() {
-    expect(student.getResponse([])).to.contain('Ptolemy');
+    student.getResponse([], function(err, data) {
+      expect(data).to.contain('Ptolemy');
+    });
   });
 
   it('Should return the quote from Ptolemy', function() {
-    expect(student.getResponse(['Ptolemy'])).to.contain('a');
+    student.getResponse(['Ptolemy'], function(err, data) {
+      expect(data).to.contain('a');
+    });
   });
 
 });
