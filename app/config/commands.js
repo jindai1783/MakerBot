@@ -4,7 +4,8 @@ var WolframUtility    = require('../wolframUtility');
 var PillsUtility      = require('../pillsUtility');
 var ChallengeUtility  = require('../challengeUtility');
 var JokesUtility      = require('../jokesUtility');
-var LunchUtility     = require('../lunchUtility');
+var LunchUtility      = require('../lunchUtility');
+var StudentUtility    = require('../studentUtility');
 
 
 var commands   = { '121'        : One2One,
@@ -13,7 +14,8 @@ var commands   = { '121'        : One2One,
                    'pills'      : PillsUtility,
                    'challenges' : ChallengeUtility,
                    'knockknock' : JokesUtility,
-                   'lunch'      : LunchUtility
+                   'lunch'      : LunchUtility,
+                   'student'    : StudentUtility
                   }
 
 module.exports = commands;
