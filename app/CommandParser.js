@@ -14,7 +14,7 @@ CommandParser.prototype.parse = function(command, callback) {
       callback(null, response);
     });
   } else {
-    callback(true);
+    callback(true, "Sorry, I don't understand. Type 'mbot help' for my commands.");
   }
 };
 

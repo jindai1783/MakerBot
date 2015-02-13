@@ -33,9 +33,9 @@ describe('Talks Utility', function() {
         this.start   = new Date(2015, 1, 16);;
       }
 
-      var nextEvent      = new nextEventDouble();
-      var tomorrowEvent  = new tomorrowEventDouble();
-      var mondayEvent    = new mondayEventDouble();
+      var nextEvent     = new nextEventDouble();
+      var tomorrowEvent = new tomorrowEventDouble();
+      var mondayEvent   = new mondayEventDouble();
 
       var GoogleCalDouble = function(option) {};
       GoogleCalDouble.prototype.getEvents = function(options, callback) {
@@ -72,6 +72,14 @@ describe('Talks Utility', function() {
 
       talksUtility.getResponse(['gobble'], function(err, string) {
         expect(string).to.equal("I do not understand 'gobble'. Type '!bot talks help' to view valid arguments.");
+        done();
+      });
+    });
+
+    it("when it is empty", function(done) {
+
+      talksUtility.getResponse([], function(err, string) {
+        expect(string).to.equal('The next event will be Steve Jobs');
         done();
       });
     });
@@ -137,9 +145,10 @@ describe('Talks Utility', function() {
       done();
     });
 
-    it('Fridays events', function(done) {
-      var today    = new Date(2015, 1, 11, 12, 30);
-      var friday   = new Date(2015, 1, 13, 12, 30);
+    it('this Fridays events', function(done) {
+      var today     = new Date(2015, 1, 11, 12, 30);
+      var friday    = new Date(2015, 1, 13, 12, 30);
+      var lastFriday= new Date(2015, 1, 6, 12, 30);
 
       var todayEventDouble = function() { 
         this.summary = "Eric Schmidt";
@@ -156,11 +165,17 @@ describe('Talks Utility', function() {
         this.start   = new Date(2015, 3, 11, 18);
       }
 
-      var todayEvent   = new todayEventDouble();
-      var fridayEvent  = new fridayEventDouble();
-      var futureEvent  = new futureEventDouble();
+      var lastFridayEventDouble = function() { 
+        this.summary = "Fred Durst";
+        this.start   = lastFriday;
+      }
 
-      expect(talksUtility.dayEvents([todayEvent, fridayEvent, futureEvent], today, 5)).to.equal('Here is the agenda for Friday: At 12:30 Michael Jackson will be giving a talk. ');
+      var todayEvent      = new todayEventDouble();
+      var fridayEvent     = new fridayEventDouble();
+      var futureEvent     = new futureEventDouble();
+      var lastFridayEvent = new lastFridayEventDouble();
+
+      expect(talksUtility.dayEvents([todayEvent, fridayEvent, lastFridayEvent, futureEvent], today, 5)).to.equal('Here is the agenda for Friday: At 12:30 Michael Jackson will be giving a talk. ');
       done();
     });
   });
