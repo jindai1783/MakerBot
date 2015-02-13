@@ -19,7 +19,7 @@ CommandParser.prototype.parse = function(command, callback) {
 };
 
 CommandParser.prototype._argumentStripper = function(command) {
-  return command.split(" ").slice(2);
+  return command.split(" ").slice(2,10);
 };
 
 CommandParser.prototype._commandStripper = function(command) {
