@@ -47,10 +47,8 @@ Lunch.prototype.getAddress = function(args) {
 };
 
 Lunch.prototype.randomRestaurant = function() {
-  console.log('I am random');
   var keys = Object.keys(this.restaurants); 
   var random = keys[Math.floor(Math.random() * keys.length)];
-  console.log(random);
   return random;
 };
 

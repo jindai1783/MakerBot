@@ -7,11 +7,15 @@ Student.prototype.hello = function() {
   return names.join("\n");
 };
 
-Student.prototype.getResponse = function(args) {
+Student.prototype.getResponse = function(args, callback) {
   if (args[0]) {
-    return this.students[args[0]][Math.floor(Math.random()*this.students[args[0]].length)];
+    if (this.students[args[0]]) {
+      callback(null, this.students[args[0]][Math.floor(Math.random()*this.students[args[0]].length)]);
+    } else {
+      callback(null, "Sorry, haven't find this student, did you spell correctly?");
+    }
   } else {
-    return this.hello();
+    callback(null, this.hello());
   }
 };
 
@@ -22,7 +26,7 @@ var allStudents = {
   'Bibiana'  : ['Hi'],                    
   'Charles'  : ['Classic'],                    
   'Clint'    : ['Hi'],                  
-  'Danielle' : ['Hi'],                     
+  'Danielle' : ['Eh?'],                     
   'Emily'    : ['Hi'],                  
   'Gabriel'  : ['Hi'],                    
   'Gus'      : ['Hi'],                
@@ -30,14 +34,14 @@ var allStudents = {
   'Huy'      : ['Hi'],                
   'India'    : ['Hi'],                  
   'Jack'     : ['Something, something, Portsmouth'],                 
-  'Jacob'    : ['So lo mo bro'],                  
+  'Jacob'    : ['Yeah, I\'ve already done that, HA HA HA hahahahaha giggle'],                  
   'Jake'     : ['Hi'],                 
   'Jin'      : ['E = MC2'],                
   'Jonathan' : ['I\'m so depressed about not going skiing this weekend.'],                     
   'Josh'     : ['Hi'],                 
   'Kieran'   : ['Mmmmmmm, nuts'],                   
   'Luke'     : [''],                 
-  'Marcin'   : ['Fuck this, I\'m going home!'],                  
+  'Marcin'   : [''],                  
   'Matteo'   : ['Hi'],                   
   'Oliver'   : ['I forgot my football kit'],                   
   'Ptolemy'  : ['Thats a great idea, but let me tell you why you are wrong.', 
@@ -45,5 +49,6 @@ var allStudents = {
                'There is only one way to avoid criticism: do nothing, say nothing and be nothing - Aristolemy'],                   
   'Richard'  : ['Hi'],                    
   'Sanda'    : ['Pushup contest FTW!!'],                  
-  'Steph'    : ['Hi']        
+  'Steph'    : ['Hi'],
+  'Sam'      : ['Pairing Pro']  
 }; 
