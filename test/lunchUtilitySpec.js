@@ -13,9 +13,15 @@ describe('Lunch', function() {
 
  it('Should return names of places to eat for lunch', function(done){
     lunch.getResponse([], function(){
-     expect(lunch.apiData.businesses[0]).to.be.a(Object());
+     expect(lunch.response).to.contain('Mango');
      done();
     });
- });
+  });
 
+ it('Should return names of places to eat for lunch', function(done){
+    lunch.getResponse(['Bleecker St. Burger'], function(){
+     expect(lunch.response).to.contain('65A Brushfield St');
+     done();
+    });
+  });
 });

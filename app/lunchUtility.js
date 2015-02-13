@@ -8,21 +8,23 @@ var yelp = require("yelp").createClient({
 function Lunch(){
   this.apiData = null;
   this.restaurants = {};
+  this.response = null;
 }
 
 Lunch.prototype.getResponse = function(args, callback) {
   var self = this;
   this.getInfo(function() {
     self.getRestaurants();
-    callback(null, self.decision(args[0]));
+    callback(null, self.response = self.decision(args[0]));
   });
 };
 
 Lunch.prototype.decision = function(arg) {
   if(arg) {
-   return this.restaurants[arg];
+   var address = this.restaurants[arg];
+   return address.join("\n");
   } else {
-   var keys = Object.keys(this.restaurants)
+   var keys = Object.keys(this.restaurants);
    return keys.join("\n");
   }
 };
@@ -39,7 +41,7 @@ Lunch.prototype.getRestaurants = function() {
   var dataSize = this.apiData.businesses.length;
   var businesses = this.apiData.businesses;
   for(i = 0; i < dataSize; i++) {
-   this.restaurants[businesses[i].name] = businesses[i].location;
+   this.restaurants[businesses[i].name] = businesses[i].location.address;
  }
  return this.restaurants;
 };
