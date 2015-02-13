@@ -38,6 +38,7 @@
     "public-google-calendar": "0.0.2",
     "underscore": "^1.7.0",
     "wolfram": "^0.3.0",
-    "wolfram-node": "0.0.1"
+    "wolfram-node": "0.0.1",
+    "yelp": "^0.1.1"
   }
 }
