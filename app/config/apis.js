@@ -6,7 +6,7 @@ var MakersGithub    = require('../makersGithub');
 var utilitiesApis = { '121'       : One2OneApi,
                       'talks'     : TalksUtilityApi,
                       'pills'     : MakersGithub,
-                      'challenge' : MakersGithub
+                      'challenges' : MakersGithub
                     }
 
 module.exports = utilitiesApis;

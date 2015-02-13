@@ -11,7 +11,7 @@ var commands   = { '121'        : One2One,
                    'q'          : WolframUtility,
                    'pills'      : PillsUtility,
                    'challenges' : ChallengeUtility,
-                   'knockknock' : jokesUtility
+                   'knockknock' : JokesUtility
                   }
 
 module.exports = commands;
