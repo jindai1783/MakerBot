@@ -15,7 +15,7 @@ bot.use(function(message, cb) {
 });
 
 bot.use(function(message, cb) {
-  if (("message" === message.type) && (message.text.substring(0,5) === 'mbot ')) {
+  if (("message" === message.type) && (message.text != undefined) && (message.text.substring(0,5) === 'mbot ')) {
     commandEngine.parse(message.text, function(err, content) {
       console.log(content);
       bot.sendMessage(message.channel, content);
