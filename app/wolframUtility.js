@@ -5,7 +5,6 @@ var WolframAPI = function() {
 };
 
 WolframAPI.prototype.getResponse = function(question, callback) {
-  console.log(question);
   if(question[0] == null) {
     callback(true, "Please ask a question e.g. 'mbot q \'How much does the earth weigh?\''");
   } else {
