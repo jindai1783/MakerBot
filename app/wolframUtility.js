@@ -5,10 +5,15 @@ var WolframAPI = function() {
 };
 
 WolframAPI.prototype.getResponse = function(question, callback) {
-  var question = question.join(" ");
-  this.ask(question, function(err, answer) {
-    callback(null, answer);
-  });
+  console.log(question);
+  if(question[0] == null) {
+    callback(true, "Please ask a question e.g. 'mbot q \'How much does the earth weigh?\''");
+  } else {
+    var question = question.join(" ");
+    this.ask(question, function(err, answer) {
+      callback(null, answer);
+    });
+  }
 };
 
 WolframAPI.prototype.ask = function(question, callback) {
