@@ -39,16 +39,14 @@ Jacob Mitchinson
 
 Makerbot has a standarised way of incorporating new modules. This makes it easy to write new modules for Makerbot. When creating a new module the public interface of that module should be a single #getResponse method. That method should take two arguments: arguments you wish to use with Makerbot e.g. 'mbot superawesome moreawesome' and a callback which will callback to the commandParser. For example:
 
-```
+```javascript
 var api = require('api');
 var readAPI = api();
 
 var SuperAwesomeModule = function() {
 
 };
-```
 
-```
 SuperAwesomeModule.prototype.getResponse = function(arguments, callback) {
     if(arguments === 'moreawesome') {
         readAPI.fetch("I want some awesome things from you", function(awesomethings){
