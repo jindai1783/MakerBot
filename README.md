@@ -32,7 +32,7 @@ To get my attention, click on me in the Makers' Slackbot and say 'mbot' followed
 * Danielle Demkiw
 * Ptolemy Barnes
 * Jin Dai
-Jacob Mitchinson
+* Jacob Mitchinson
 
 
 ## Writing Modules for Makerbot
