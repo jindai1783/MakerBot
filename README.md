@@ -44,8 +44,14 @@ To get my attention, click on me in the Makers' Slackbot and say 'mbot' followed
 Makerbot has a standarised way of incorporating new modules that make it easy to write new modules for Makerbot. 
 
 To create your new module, you must provide the public interface with a single #getResponse method. This method should take two arguments:   
-* the extra parameters/arguments you wish to use with Makerbot e.g. 'mbot superawesome moreawesome' 
-*and a callback which will callback to the commandParser. 
+
+1 the extra arguments you wish to use with Makerbot 
+
+* Each module is instantiated by Makerbot with a single command, for example, the lunch module is instantiated by the command 'mbot lunch'. The initial command, however, is stripped away by the command parser and only the subsequent arguments are passed to Makerbot in the form of an array. If no extra arguments are passed, your module will be passed an empty array as the first argument. For example, the command 'mbot lunch' will pass an empty array to the getResponse method and the method will return a default value (a list of restaurants). If you pass the command 'mbot lunch random', the lunch module will be passed the argument ['random'] and getResponse method will return a random restaurant from the list.   
+
+2 and a callback which will callback to the commandParser. 
+
+* The callback method
 
 For example:
 
