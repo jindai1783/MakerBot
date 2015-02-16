@@ -41,7 +41,13 @@ To get my attention, click on me in the Makers' Slackbot and say 'mbot' followed
 
 ## Writing Modules for Makerbot
 
-Makerbot has a standarised way of incorporating new modules. This makes it easy to write new modules for Makerbot. When creating a new module the public interface of that module should be a single #getResponse method. That method should take two arguments: arguments you wish to use with Makerbot e.g. 'mbot superawesome moreawesome' and a callback which will callback to the commandParser. For example:
+Makerbot has a standarised way of incorporating new modules that make it easy to write new modules for Makerbot. 
+
+To create your new module, you must provide the public interface with a single #getResponse method. This method should take two arguments:   
+* the extra parameters/arguments you wish to use with Makerbot e.g. 'mbot superawesome moreawesome' 
+*and a callback which will callback to the commandParser. 
+
+For example:
 
 
 ```javascript
