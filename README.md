@@ -45,14 +45,14 @@ Makerbot has a standarised way of incorporating new modules that make it easy to
 
 To create your new module, you must provide the public interface with a single #getResponse method. This method should take two arguments:   
 
-1 the extra arguments you wish to use with Makerbot 
+1 -  Extra arguments you wish to use with Makerbot 
 
 * Each module is instantiated by Makerbot with a single command, for example, the lunch module is instantiated by the command 'mbot lunch'. The initial command ('lunch'), however, is stripped away by the command parser and only the subsequent arguments are passed to Makerbot in the form of an array. If no extra arguments are passed, your module will be passed an empty array as the first argument. 
 * For example, if you pass the command 'mbot lunch random', the lunch module will be passed the argument ['random'] and getResponse method will return a random restaurant from the list.   
 
-2 and a callback which will callback to the commandParser. 
+2  - A callback which will callback to the commandParser. 
 
-* The callback method
+* The callback method should return the response, in the form of a string, that you wish Makerbot to display to the user. It should also have an error handler (null). If you return anything other than a string, the command parser will return an error and will not display your response. 
 
 For example:
 
@@ -68,7 +68,7 @@ var SuperAwesomeModule = function() {
 SuperAwesomeModule.prototype.getResponse = function(arguments, callback) {
     if(arguments === 'moreawesome') {
         readAPI.fetch("I want some awesome things from you", function(awesomethings){
-            callback(awesomethings);
+            callback(null, awesomethings);
         });
     };
 };
