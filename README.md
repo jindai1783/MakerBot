@@ -2,7 +2,8 @@
 
 ## What is Makerbot?
 
-Makerbot is the digital assistant for Makers Academy. It was born out of a need for a user interface to pull together the resources we all use regularly. It lives inside the Makers' Slack environment. Makerbot is modular and open source so if you have any ideas you would like incorporated into Makerbot, get coding! See the section: Writing Modules for Makerbot if you would like to know how.
+Makerbot is the digital assistant for Makers Academy. It was born out of a need for a user interface to pull together the resources we all use regularly. It lives inside the Makers' Slack environment. 
+Makerbot is modular and open source so if you have any ideas you would like incorporated into Makerbot, get coding! See the section: Writing Modules for Makerbot if you would like to know how.
 
 ## How to Use Makerbot
 
@@ -14,6 +15,9 @@ To get my attention, click on me in the Makers' Slackbot and say 'mbot' followed
 * **talks** - will show you the talks taking place - use with the following arguments: 'next', 'today' and 'tomorrow' e.g. 'mbot talks next Monday'
 * **121** - will show you the 121 schedule at Makers (remember to login!) e.g. 'mbot 121'
 * **q** - will answer your question using Wolfram Alpha e.g. "mbot q 'What's the airspeed of an unladen swallow?'"
+* **knockknock** - will return a knock-knock joke
+* **lunch** - uses the yelp API to return a list of restaurants around Makers Academy. If you give the command 'lunch random' it will return a random selection from the list of restaurants. If you give the command 'lunch +name-of-restaurant' it will return the address for that restaurant. 
+* **students** - will return a list of students in the December cohort at Makers Academy. If you give the command 'student +name of student', it will return a quote from that student 
 
 ## Powered By
 
@@ -26,20 +30,21 @@ To get my attention, click on me in the Makers' Slackbot and say 'mbot' followed
 * Wolfram Alpha
 * Github
 
-## Team
+## Team/Contributors 
 
-* Clint Pijuan
-* Danielle Demkiw
-* Ptolemy Barnes
-* Jin Dai
-Jacob Mitchinson
+* [Clint Pijuan](https://github.com/clint77)
+* [Danielle Demkiw](https://github.com/ddemkiw)
+* [Ptolemy Barnes](https://github.com/ptolemybarnes)
+* [Jin Dai](https://github.com/jindai1783)
+* [Jacob Mitchinson](https://github.com/jacobmitchinson)
 
 
 ## Writing Modules for Makerbot
 
 Makerbot has a standarised way of incorporating new modules. This makes it easy to write new modules for Makerbot. When creating a new module the public interface of that module should be a single #getResponse method. That method should take two arguments: arguments you wish to use with Makerbot e.g. 'mbot superawesome moreawesome' and a callback which will callback to the commandParser. For example:
 
-````var api = require('api');
+````````````
+var api = require('api');
 var readAPI = api();
 
 var SuperAwesomeModule = function() {
