@@ -12,7 +12,7 @@ To get my attention, click on me in the Makers' Slackbot and say 'mbot' followed
 * **help** - will show you all commands. Makerbot is always updating so it's always good to check my help commands e.g. 'mbot help'
 * **pills** - will show all the Makers pills - use with an argument to get the link - e.g. 'mbot pills' followed by 'mbot pills pill.md'
 * **challenges** - will show all the Makers challenges - use with an argument to get the link - e.g. 'mbot challenges' followed by 'mbot challenges challenge.md'
-* **talks** - will show you the talks taking place - use with the following arguments: 'next', 'today' and 'tomorrow' e.g. 'mbot talks next Monday'
+* **talks** - will show you the talks taking place - use with the following arguments: 'next', 'today' and 'tomorrow' e.g. 'mbot talks Monday'
 * **121** - will show you the 121 schedule at Makers (remember to login!) e.g. 'mbot 121'
 * **q** - will answer your question using Wolfram Alpha e.g. "mbot q 'What's the airspeed of an unladen swallow?'"
 * **knockknock** - will return a knock-knock joke
