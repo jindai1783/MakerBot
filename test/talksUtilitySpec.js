@@ -15,7 +15,7 @@ describe('Talks Utility', function() {
       var nextTime   = new Date();
       nextTime.setHours(nextTime.getHours() + 1);
 
-      var nextEventDouble = function() { 
+      var nextEventDouble = function() {
         this.summary = "Steve Jobs";
         this.start   = nextTime;
       }
@@ -23,12 +23,12 @@ describe('Talks Utility', function() {
       var tomorrow   = new Date();
       tomorrow.setDate(tomorrow.getDate() + 1);
 
-      var tomorrowEventDouble = function() { 
+      var tomorrowEventDouble = function() {
         this.summary = "Ptolemy Barnes";
         this.start   = tomorrow;
       }
 
-      var mondayEventDouble = function() { 
+      var mondayEventDouble = function() {
         this.summary = "Fred Flintstone";
         this.start   = new Date(2015, 1, 16);;
       }
@@ -55,7 +55,7 @@ describe('Talks Utility', function() {
     it("'tomorrow'", function(done) {
 
       talksUtility.getResponse(['tomorrow'], function(err, string) {
-        expect(string).to.match(/Ptolemy Barnes will be giving a talk/);
+        expect(string).to.match(/Here is the agenda for tomorrow: /);
         done();
       });
     });
@@ -101,17 +101,17 @@ describe('Talks Utility', function() {
     });
 
     it('todays events', function(done) {
-      var steveEventDouble = function() { 
+      var steveEventDouble = function() {
         this.summary = "Steve Jobs";
         this.start   = new Date(2015, 1, 11, 12, 30);
         }
 
-      var billEventDouble = function() { 
+      var billEventDouble = function() {
         this.summary = "Bill Gates";
         this.start   = new Date(2015, 1, 11, 18, 0);
       }
 
-      var futureEventDouble = function() { 
+      var futureEventDouble = function() {
         this.summary = "Elon Musk";
         this.start   = new Date(2016, 1, 11, 18);
       }
@@ -128,12 +128,12 @@ describe('Talks Utility', function() {
       var today    = new Date(2015, 0, 1, 12, 30);
       var tomorrow = new Date(2015, 0, 2, 12, 30);
 
-      var todayEventDouble = function() { 
+      var todayEventDouble = function() {
         this.summary = "Eric Schmidt";
         this.start   = today;
       }
 
-      var tomorrowEventDouble = function() { 
+      var tomorrowEventDouble = function() {
         this.summary = "Elon Musk";
         this.start   = tomorrow;
       }
@@ -150,22 +150,22 @@ describe('Talks Utility', function() {
       var friday    = new Date(2015, 1, 13, 12, 30);
       var lastFriday= new Date(2015, 1, 6, 12, 30);
 
-      var todayEventDouble = function() { 
+      var todayEventDouble = function() {
         this.summary = "Eric Schmidt";
         this.start   = today;
       }
 
-      var fridayEventDouble = function() { 
+      var fridayEventDouble = function() {
         this.summary = "Michael Jackson";
         this.start   = friday;
       }
 
-      var futureEventDouble = function() { 
+      var futureEventDouble = function() {
         this.summary = "Elon Musk";
         this.start   = new Date(2015, 3, 11, 18);
       }
 
-      var lastFridayEventDouble = function() { 
+      var lastFridayEventDouble = function() {
         this.summary = "Fred Durst";
         this.start   = lastFriday;
       }

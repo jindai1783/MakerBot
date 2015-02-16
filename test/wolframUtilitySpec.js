@@ -10,10 +10,18 @@ describe("wolframUtility", function() {
     wolframAPI = new WolframAPI();
   });
 
-  it("it should return the correct response", function(done) {
+  it("return the correct response", function(done) {
     this.timeout(10000);
     wolframAPI.getResponse("What is the airspeed velocity of an unladen swallow?".split(" "), function(err, answer) {
       expect(answer).to.contain('25 mph');
+      done();
+    });
+  });
+
+  it("return an error if no question is provided", function(done) {
+    this.timeout(10000);
+    wolframAPI.getResponse([], function(err, answer) {
+      expect(answer).to.contain("Please ask a question e.g. 'mbot q \'How much does the earth weigh?\''");
       done();
     });
   });

@@ -1,4 +1,4 @@
-[![Code Climate](https://codeclimate.com/repos/54ddc110e30ba070710052ce/badges/c04aa5a3fc98b0c98879/gpa.svg)](https://codeclimate.com/repos/54ddc110e30ba070710052ce/feed)
+[![Code Climate](https://codeclimate.com/repos/54ddc110e30ba070710052ce/badges/c04aa5a3fc98b0c98879/gpa.svg)](https://codeclimate.com/repos/54ddc110e30ba070710052ce/feed) [![Test Coverage](https://codeclimate.com/repos/54ddc110e30ba070710052ce/badges/c04aa5a3fc98b0c98879/coverage.svg)](https://codeclimate.com/repos/54ddc110e30ba070710052ce/feed)
 
 ## What is Makerbot?
 
@@ -43,7 +43,8 @@ To get my attention, click on me in the Makers' Slackbot and say 'mbot' followed
 
 Makerbot has a standarised way of incorporating new modules. This makes it easy to write new modules for Makerbot. When creating a new module the public interface of that module should be a single #getResponse method. That method should take two arguments: arguments you wish to use with Makerbot e.g. 'mbot superawesome moreawesome' and a callback which will callback to the commandParser. For example:
 
-````````````
+
+```javascript
 var api = require('api');
 var readAPI = api();
 
@@ -58,7 +59,7 @@ SuperAwesomeModule.prototype.getResponse = function(arguments, callback) {
         });
     };
 };
-````
+```
 
 
 
