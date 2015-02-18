@@ -1,6 +1,6 @@
 var chai = require('chai');
 var expect = chai.expect;
-var Jokes = require('../app/jokesUtility.js');
+var Jokes = require('../app/utilities/jokesUtility.js');
 
 describe('Jokes', function() {
   it('should return a joke',function(){

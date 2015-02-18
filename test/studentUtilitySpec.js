@@ -1,6 +1,6 @@
 var chai = require('chai');
 var expect = chai.expect;
-var Student = require('../app/studentUtility.js');
+var Student = require('../app/utilities/studentUtility.js');
 
 describe('student', function() {
 

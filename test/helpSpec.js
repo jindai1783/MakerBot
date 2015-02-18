@@ -1,5 +1,5 @@
 var commandsFile = require('../app/config/commandsList');
-var HelpUtility = require('../app/helpUtility');
+var HelpUtility = require('../app/utilities/helpUtility');
 var chai = require('chai');
 var expect = chai.expect;
 
