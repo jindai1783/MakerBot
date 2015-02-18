@@ -3,19 +3,13 @@ var CommandParser = function(utilitiesHash, utilitiesApiHash) {
   this.utilitiesApis = utilitiesApiHash;
 };
 
-CommandParser.prototype.parse = function(command, callback) {
-  var rootCommand = this._commandStripper(command);
-  var arguments   = this._argumentStripper(command);
+CommandParser.prototype.parse = function(messageObject) {
+  var command     = messageObject.text;
+  messageObject.command = this._commandStripper(command);
+  messageObject.args    =  this._argumentStripper(command);
+  console.log(typeof messageObject.args);
 
-  if(this.utilities[rootCommand] != null) {
-    var responseObject = new this.utilities[rootCommand](this.utilitiesApis[rootCommand]);
-
-    response = responseObject.getResponse(arguments, function(err, response) {
-      callback(null, response);
-    });
-  } else {
-    callback(true, "Sorry, I don't understand. Type 'mbot help' for my commands.");
-  }
+  return messageObject;
 };
 
 CommandParser.prototype._argumentStripper = function(command) {

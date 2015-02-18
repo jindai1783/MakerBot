@@ -3,13 +3,20 @@ var bot           = new slackbot('xoxb-3664957276-x4H5juXjVNiHKheMYsz1VdHa');
 var commandParser = require('./commandParser');
 
 var commandLibrary = require('./config/commands');
-var utilitiesApis = require('./config/apis');
+var utilitiesApis  = require('./config/apis');
 
-var commandEngine = new commandParser(commandLibrary, utilitiesApis);
+var commandEngine  = new commandParser(commandLibrary, utilitiesApis);
 
 bot.use(function(message, cb) {
   if ('message' == message.type) {
     console.log(message.user + ' said: ' + message.text);
+  }
+  cb();
+});
+
+bot.use(function(message, cb) {
+  if (('message' === message.type) && (message.command != undefined)) {
+    console.log(message.command);
   }
   cb();
 });
@@ -22,8 +29,6 @@ bot.use(function(message, cb) {
     });
   }
 });
-
-
 
 bot.connect();
 

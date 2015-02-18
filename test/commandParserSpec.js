@@ -5,55 +5,25 @@ var CommandParser = require('../app/CommandParser.js');
 describe("Command Parser", function() {
 
   var commandParser;
-  var hash;
+  var messageObject;
 
   beforeEach(function(){
-
-    var OneToOneDouble = function() {
-      this.arguments = arguments;
-    };
-
-    var LecturesDouble = function() {
-      this.arguments = arguments;
-    };
-
-    LecturesDouble.prototype.getResponse = function(args, callback) {
-         callback(null, "https://github.com/makersacademy/course/wiki/Calendar");
-    };   
-
-    OneToOneDouble.prototype.getResponse = function(args,callback) {
-      if (args[0] === 'henry') {
-        callback(null, 'Available');
-      }
-      else {
-        callback(null, "https://github.com/makersacademy/course/wiki/121-and-Challenge-Review-slots");
-      }
-    };
-
-    var utilityHash     = { '121': OneToOneDouble, 'lectures': LecturesDouble };
-    var utilityApisHash = { '121': "", 'lectures': "" };
-    
-    commandParser = new CommandParser(utilityHash, utilityApisHash);
+    commandParser = new CommandParser();
+    MessageObject = function() {
+      this.text = '!mbot 121 henry' 
+    }
   });
 
-  it("return the correct content for the 121 command", function() {
-    commandParser.parse('!bot 121', function(err, data) {
-      expect(data).to.equal('https://github.com/makersacademy/course/wiki/121-and-Challenge-Review-slots');
-    });
+  it('returns a message object with command attribute set correctly', function() {
+    var message = new MessageObject();
+
+    expect(commandParser.parse(message).command).to.eq('121');
   });
 
-  it("return the correct content when an argument is used", function(done) {
-    commandParser.parse('!bot 121 henry', function(err, data) {
-      expect(data).to.equal('Available');
-      done();
-    });
-  });
+  it('returns a message object with arugment attribute set correctly', function() {
+    var message = new MessageObject();
 
-  it("return the correct content for the lecture command",  function(done) {
-    commandParser.parse('!bot lectures', function(err, data) {
-      expect(data).to.equal('https://github.com/makersacademy/course/wiki/Calendar');
-      done();
-    });
+    expect(commandParser.parse(message).args[0]).to.eq('henry');
   });
 
   it("return the root command", function() {
