@@ -16,7 +16,11 @@ bot.use(function(message, cb) {
 });
 
 bot.use(function(message, cb) {
-  if (('message' === message.type) && (message.command != undefined)) {
+  if (commandLibrary[message.command] != undefined) {
+    var responseObject = new commandLibrary[message.command](utilitiesApis[message.command]);
+    responseObject.getResponse(message.args, function(err, content) {
+      bot.sendMessage(message.channel, content);
+    });
   }
   cb();
 });

@@ -4,7 +4,7 @@ var CommandParser = function(utilitiesHash, utilitiesApiHash) {
 };
 
 CommandParser.prototype.parse = function(messageObject) {
-  var command     = messageObject.text;
+  var command           = messageObject.text;
   messageObject.command = this._commandStripper(command);
   messageObject.args    = this._argumentStripper(command);
   console.log(typeof messageObject.args);
