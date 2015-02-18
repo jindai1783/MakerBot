@@ -1,4 +1,4 @@
-var RepoUtility = require('../app/repoUtility.js');
+var RepoUtility = require('./repoUtility.js');
 
 function Pill(api) {
   this.api = new api();

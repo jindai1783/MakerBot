@@ -1,4 +1,4 @@
-var commands = require('./config/commandsList');
+var commands = require('../config/commandsList');
 
 var HelpUtility = function() {
 

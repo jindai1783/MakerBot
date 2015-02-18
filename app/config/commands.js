@@ -1,12 +1,12 @@
-var One2One           = require('../one2OneUtility.js');
-var TalksUtility      = require('../talksUtility');
-var WolframUtility    = require('../wolframUtility');
-var PillsUtility      = require('../pillsUtility');
-var ChallengeUtility  = require('../challengeUtility');
-var JokesUtility      = require('../jokesUtility');
-var LunchUtility      = require('../lunchUtility');
-var StudentUtility    = require('../studentUtility');
-var HelpUtility       = require('../helpUtility');
+var One2One           = require('../utilities/one2OneUtility.js');
+var TalksUtility      = require('../utilities/talksUtility');
+var WolframUtility    = require('../utilities/wolframUtility');
+var PillsUtility      = require('../utilities/pillsUtility');
+var ChallengeUtility  = require('../utilities/challengeUtility');
+var JokesUtility      = require('../utilities/jokesUtility');
+var LunchUtility      = require('../utilities/lunchUtility');
+var StudentUtility    = require('../utilities/studentUtility');
+var HelpUtility       = require('../utilities/helpUtility');
 
 
 var commands   = { '121'        : One2One,
