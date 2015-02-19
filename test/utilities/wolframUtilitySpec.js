@@ -1,6 +1,6 @@
 var chai         = require('chai');
 var expect       = chai.expect;
-var WolframAPI = require('../app/utilities/wolframUtility.js');
+var WolframAPI = require('../../app/utilities/wolframUtility.js');
 
 describe("wolframUtility", function() {
 

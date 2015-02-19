@@ -1,6 +1,6 @@
 var chai = require('chai');
 var expect = chai.expect;
-var One2One = require('../app/utilities/one2OneUtility');
+var One2One = require('../../app/utilities/one2OneUtility');
 
 describe('One2One', function() {
 

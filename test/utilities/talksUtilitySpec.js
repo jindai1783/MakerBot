@@ -2,7 +2,7 @@
 
 var chai           = require('chai');
 var expect         = chai.expect;
-var TalksUtility   = require('../app/utilities/talksUtility.js');
+var TalksUtility   = require('../../app/utilities/talksUtility.js');
 
 describe('Talks Utility', function() {
 

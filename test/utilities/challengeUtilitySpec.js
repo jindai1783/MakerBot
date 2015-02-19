@@ -1,7 +1,7 @@
 var chai = require('chai');
 var expect = chai.expect;
-var MakersGitHub = require('../app/makersGitHub.js');
-var Challenge = require('../app/utilities/challengeUtility.js');
+var MakersGitHub = require('../../app/makersGitHub.js');
+var Challenge = require('../../app/utilities/challengeUtility.js');
 
 describe('challenge', function() {
 

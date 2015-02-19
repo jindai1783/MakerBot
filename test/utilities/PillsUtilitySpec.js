@@ -1,7 +1,7 @@
 var chai = require('chai');
 var expect = chai.expect;
-var MakersGitHub = require('../app/makersGitHub.js');
-var Pill = require('../app/utilities/pillsUtility.js');
+var MakersGitHub = require('../../app/makersGitHub.js');
+var Pill = require('../../app/utilities/pillsUtility.js');
 
 describe('pill', function() {
 
