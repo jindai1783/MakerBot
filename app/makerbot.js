@@ -1,4 +1,4 @@
-var slackbot      = require('node-slackbot');
+var slackbot      = require('./slackbot');
 var commandParser = require('./commandParser');
 
 var bot           = new slackbot('xoxb-3664957276-x4H5juXjVNiHKheMYsz1VdHa', 
