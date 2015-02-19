@@ -1,7 +1,4 @@
-var CommandParser = function(utilitiesHash, utilitiesApiHash) {
-  this.utilities     = utilitiesHash;
-  this.utilitiesApis = utilitiesApiHash;
-};
+var CommandParser = function(utilitiesHash, utilitiesApiHash) {};
 
 CommandParser.prototype.parse = function(messageObject) {
   var command           = messageObject.text;
