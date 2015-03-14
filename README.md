@@ -1,6 +1,8 @@
+# MakerBot
+
 [![Code Climate](https://codeclimate.com/repos/54ddc110e30ba070710052ce/badges/c04aa5a3fc98b0c98879/gpa.svg)](https://codeclimate.com/repos/54ddc110e30ba070710052ce/feed) [![Test Coverage](https://codeclimate.com/repos/54ddc110e30ba070710052ce/badges/c04aa5a3fc98b0c98879/coverage.svg)](https://codeclimate.com/repos/54ddc110e30ba070710052ce/feed)
 
-## What is Makerbot?
+## Introduction - What is MakerBot?
 
 Makerbot is the digital assistant for Makers Academy. It was born out of a need for a user interface to pull together the resources we all use regularly. It lives inside the Makers' Slack environment. 
 Makerbot is modular and open source so if you have any ideas you would like incorporated into Makerbot, get coding! See the section: Writing Modules for Makerbot if you would like to know how.
@@ -73,8 +75,5 @@ SuperAwesomeModule.prototype.getResponse = function(arguments, callback) {
     };
 };
 ```
-
-
-
 
 
